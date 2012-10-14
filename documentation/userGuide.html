@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <title>CB4J</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="benas">
+
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/css/prettify.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+    </style>
+    <link href="../resources/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script type="text/javascript" src="../resources/js/prettify.js"></script>
+
+</head>
+
+<body onload="prettyPrint()">
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="../index.html">CB4J</a>
+            <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">Version: 1.0.0</p>
+                <ul class="nav">
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="dropdown active">
+                        <a id="documentation" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Documentation<b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="documentation">
+                            <li><a href="gettingStarted.html">Getting started</a></li>
+                            <li><a href="architecture.html">Architecture</a></li>
+                            <li><a href="userGuide.html">User Guide</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a id="tutorials" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="tutorials">
+                            <li><a href="../tutorials/hellocb4j.html">Hello CB4J!</a></li>
+                            <li><a href="../tutorials/customers.html">Customers ETL</a></li>
+                            <li><a href="../tutorials/products.html">Product Statistics</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">About CB4J</li>
+                    <li><a href="../index.html">Overview</a></li>
+                    <li><a href="../releaseNotes.html">Release notes</a></li>
+                    <li class="nav-header">Documentation</li>
+                    <li><a href="gettingStarted.html">Getting started</a></li>
+                    <li><a href="architecture.html">Architecture</a></li>
+                    <li class="active"><a href="userGuide.html">User Guide</a></li>
+                    <li class="nav-header">Tutorials</li>
+                    <li><a href="../tutorials/hellocb4j.html">Hello CB4J!</a></li>
+                    <li><a href="../tutorials/customers.html">Customers ETL</a></li>
+                    <li><a href="../tutorials/products.html">Product Statistics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="span9">
+
+            <div class="header">
+                <h1>User Guide</h1>
+            </div>
+
+            <div class="row-fluid">
+
+            <h3>1. Introduction</h3>
+
+            <p>To work effectively with CB4J, you have to follow these steps :</p>
+            <ul>
+                <li>Provide CSV configuration parameters (Input file path, file encoding,field separator,etc)</li>
+                <li>Register field validation rules (field size, data type and format,etc) that will be used by the record validator to validate data</li>
+                <li>Register CSV to Object mapping logic that will be used by the record mapper</li>
+                <li>Register record processing business logic that will be applied by record processor</li>
+            </ul>
+            
+            <p>All these steps can be done through the <code class="prettyprint">BatchConfiguration</code> class which is the main entry point to configure the engine.</p>
+
+            <h3>2. Using CB4J</h3>
+
+            <h4>2.1 Configuring the engine</h4>
+
+            <p>To configure CB4J, you must supply a set of predefined parameters (see table below).
+            You can configure CB4J in two ways :</p>
+
+            <ul>
+                <li>With a configuration file (standard java properties file)</li>
+                <li>With a <code class="prettyprint">java.util.Properties</code></li>
+            </ul>
+
+            <p>Configuration parameters are defined in the following table :</p>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Required</th>
+                    <th>Default Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>input.data.path</td>
+                    <td>absolute path of input data file</td>
+                    <td>true</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>input.data.encoding</td>
+                    <td>input data file encoding</td>
+                    <td>false</td>
+                    <td>System default encoding</td>
+                </tr>
+                <tr>
+                    <td>input.data.skipHeader</td>
+                    <td>Specify if the first record should be skipped. If set to true, the header record is escaped from record numbering</td>
+                    <td>false</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>input.record.separator</td>
+                    <td>Fields separator in a record</td>
+                    <td>false</td>
+                    <td>comma ','</td>
+                </tr>
+                <tr>
+                    <td>input.record.size</td>
+                    <td>Record size (number of fields)</td>
+                    <td>true</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>output.data.ignored</td>
+                    <td>Absolute path to the log file of ignored records</td>
+                    <td>false</td>
+                    <td>${input.data.path}-ignored.log. The extension of the input data file (if any) will be removed</td>
+                </tr>
+                <tr>
+                    <td>output.data.rejected</td>
+                    <td>Absolute path to the log file of rejected records</td>
+                    <td>false</td>
+                    <td>${input.data.path}-rejected.log. The extension of the input data file (if any) will be removed</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p>The code sample below shows how to configure CB4J using a <code class="prettyprint">java.util.Properties</code> object:</p>
+
+<pre class="prettyprint">
+Properties configurationProperties = new Properties();
+configurationProperties.setProperty("input.data.path","/data/cb4j/myData.csv");
+configurationProperties.setProperty("input.record.size","7");
+
+BatchConfiguration batchConfiguration = new BatchConfiguration(configurationProperties);
+</pre>
+
+            <p>You can also use a configuration file to externalize parameters. The following is an example of a configuration file ("/data/cb4j/myConfig.cfg"):</p>
+
+<pre>
+input.data.path=/data/cb4j/myData.csv
+input.record.size=7
+</pre>
+
+            <p>To use this configuration file with CB4J, you can use the following snippet :</p>
+
+<pre class="prettyprint">
+BatchConfiguration batchConfiguration = new BatchConfiguration("/data/cb4j/myConfig.cfg");
+</pre>
+
+            <p>Once you have initialized CB4J with all parameters (and registered mandatory services, see next section ), you have to configure the engine as follows:</p>
+
+<pre class="prettyprint">
+/*
+ * Configure the engine
+ */
+try {
+    batchConfiguration.configure();
+} catch (BatchConfigurationException e) {
+    System.err.println(e.getMessage());
+}
+</pre>
+
+            <div class="alert alert-info">
+                <span class="label label-info">Info</span> : CB4J throws a <code class="prettyprint">BatchConfigurationException</code> in the following cases :
+                <ul>
+                    <li>One of the mandatory parameters is not specified</li>
+                    <li>A <code class="prettyprint">java.io.FileNotFoundException</code> is thrown when trying to open the input CSV file</li>
+                    <li>Log files for ignored and rejected records cannot be used</li>
+                    <li>One of the mandatory services is not specified</li>
+                </ul>
+            </div>
+
+            <h4>2.2 Validating data</h4>
+
+            <h5>2.2.1 Using built-in validators</h5>
+
+            <p>CB4J validates field data with implementations of <code class="prettyprint">FieldValidator</code> interface and comes with built-in validators which allow you to ensure that a field content has a valid format and type. These validators are located in the <code class="prettyprint">net.benas.cb4j.core.validator</code> package.</p>
+
+            <p>For example, let's say that the first field's value must be numeric. With CB4J you simply declare this constraint using the <code class="prettyprint">NumericFieldValidator</code> as follows:</p>
+
+            <code class="prettyprint">batchConfiguration.registerFieldValidator(1, new NumericFieldValidator());</code>
+
+            <h5>2.2.2 Registering multiple validators</h5>
+
+            <p>You may want to apply multiple validation rules to a single field. For example, the first field must not be empty and must be a date value having the <code class="prettyprint">dd/MM/yyyy</code> format.
+            To register multiples validators for this field, you have to declare a list containing all validators :</p>
+
+<pre class="prettyprint">
+List&lt;FieldValidator&gt; field1Validators = new ArrayList&lt;FieldValidator&gt;();
+field1Validators.add(new NotEmptyFieldValidator());
+field1Validators.add(new DateFormatFieldValidator("dd/MM/yyyy"));
+
+batchConfiguration.registerFieldValidators(1,field1Validators);
+</pre>
+
+            <div class="alert alert-info">
+                <span class="label label-info">Info</span> : When using multiple validators, the validation order applied by CB4J is the insertion order of validators in the list.
+            </div>
+
+            <h4>2.3 Mapping CSV records to java objects</h4>
+
+            <p>To map a CSV record to a business java object, you have to implement the <code class="prettyprint">RecordMapper&lt;T&gt;</code> interface and register your implementation at configuration time as follows :</p>
+            <p><code class="prettyprint">batchConfiguration.registerRecordMapper(new MyRecordMapper());</code></p>
+            
+            <p>The <a href="../tutorials/customers.html">customers ETL tutorial</a> shows an example of record mapper implementation.</p>
+
+            <div class="alert">
+                <span class="label label-warning">Warning</span> : CB4J does not provide a default implementation of the <code class="prettyprint">RecordMapper&lt;T&gt;</code> interface for performance reason. In fact, CB4J may use Java Reflection API to introspect business object field types which may impact the execution performance.
+            </div>
+            
+            <h4>2.4 Writing processing logic</h4>
+
+            <p>When using CB4J, you process an object view of a CSV record. To define your record processing business logic, you have to implement the <code class="prettyprint">RecordProcessor&lt;T&gt;</code> interface and register your implementation at configuration time as follows :</p>
+            <p><code class="prettyprint">batchConfiguration.registerRecordProcessor(new MyRecordProcessor());</code></p>
+
+            <div class="alert">
+                <span class="label label-warning">Warning</span> : You have to use the <strong>same</strong> type when implementing <code class="prettyprint">RecordMapper&lt;T&gt;</code> and <code class="prettyprint">RecordProcessor&lt;T&gt;</code> interfaces
+            </div>
+
+            <h4>2.5 Running the batch process</h4>
+
+            <p>Once you have configured CB4J using the configuration API, you can launch the batch execution as follows :</p>
+
+<pre class="prettyprint">
+BatchEngine batchEngine = new DefaultBatchEngineImpl(batchConfiguration);
+BatchRunner batchRunner = new BatchRunner(batchEngine);
+batchRunner.run();
+</pre>
+
+            <h3>3. Extending CB4J</h3>
+
+            <p>Although CB4J comes with default implementation of common requirements, it lets you extend these defaults as you need.
+            In this section, we will show how you can extend CB4J to meet you custom requirements.</p>
+
+            <div class="alert alert-info">
+                <span class="label label-info">Info</span> : In this section, <code class="prettyprint">batchConfiguration</code> is supposed to be a <code class="prettyprint">BatchConfiguration</code> instance correctly configured with CB4J parameters.
+            </div>
+
+            <h4>3.1 Writing a custom batch engine</h4>
+
+            <p>The internal CB4J engine extends the <code class="prettyprint">java.lang.Runnable</code> interface with two methods to initialize and shutdown the engine :</p>
+<pre class="prettyprint">
+public interface BatchEngine extends Runnable{
+
+    /**
+    * initialize the engine
+    */
+    public void init();
+
+    /**
+    * shutdown the engine
+    */
+    public void shutdown();
+
+}
+</pre>
+            By default, the <code class="prettyprint">DefaultBatchEngineImpl</code> logs a message to the console to signal batch starting and ending steps.<br/>
+            To override this default behavior, you have to extend the <code class="prettyprint">DefaultBatchEngineImpl</code> and override <code class="prettyprint">init()</code> and/or <code class="prettyprint">shutdown()</code> methods to provide a custom initializing and/or shutdown code. For instance, this is where you can open/close a database connection.<br/>
+            The <a href="../tutorials/products.html">products statistics tutorial</a> shows an example of how to override the the <code class="prettyprint">DefaultBatchEngineImpl</code>.
+            <h4>3.2 Writing a custom field validator</h4>
+
+            <p>CB4J comes with basic field validators for common requirements such as not empty field, numeric values, etc.
+            Please refer to the javadoc of <code class="prettyprint">net.benas.cb4j.core.validator</code> package for more details.</p>
+
+            <p>To write a custom field validator, you have to implement the <code class="prettyprint">FieldValidator</code> interface. This interface contains the following methods :</p>
+            <ul>
+                <li><code class="prettyprint">public boolean isValidField(final Field field)</code> : This method should contain the validation logic for a field</li>
+                <li><code class="prettyprint">public String getValidationRuleDescription()</code> : This method should return a description of the validation rule implemented by the validator. This description will be used to report the cause of record rejection</li>
+            </ul>
+
+            <p>In this section, we will show an example of custom validator which validates that a field value must start with 'XP'.</p>
+
+<pre class="prettyprint">
+public class MyCustomFieldValidator implements FieldValidator{
+
+    public boolean isValidField(final Field field) {
+        return field.getContent().startsWith("XP");
+    }
+
+    public String getValidationRuleDescription() {
+        return "field content must start with XP";
+    }
+
+}
+</pre>
+
+            <p>To register this validator for the field at index 1, use the following CB4J API :</p>
+
+<pre class="prettyprint">
+batchConfiguration.registerFieldValidator(1,new MyCustomFieldValidator());
+</pre>
+
+
+            <h4>3.3 Writing a custom record validator</h4>
+
+<p>            By default, CB4J consider a record to be valid if all its fields are valid according to declared validation rules. But this default behavior works only if validation logic for each field is independent form other fields.
+
+            CB4J provides a simple way to extend this default behavior if validation rules involves multiple fields at the same time.</p>
+
+           <p> In this section, we will use the following record format as example:</p>
+
+<pre>
+field1;field2
+foo;foobar
+foo;boobar
+</pre>
+
+            <p>The validation rules are the following :</p>
+            <ul>
+                <li>All fields are required</li>
+                <li>field1 should have a length of 3 characters</li>
+                <li>field2 content must start with field1's content</li>
+            </ul>
+
+            <p>As you can see, this requirement cannot be implemented using the default CB4J validation.
+            Conditions 1 and 2 can be implemented by declaring regular field validators, but not Condition 3 which involves field1 and field2 at the same time. This validation requirement should be done at record level and not field level.</p>
+            <p>We should extend the default behavior with a custom record validator. To do this, we will extend the <code class="prettyprint">DefaultRecordValidatorImpl</code> class and override the <code class="prettyprint">validateRecord(Record record)</code> method :<p/>
+
+<pre class="prettyprint">
+public class MyCustomRecordValidator extends DefaultRecordValidatorImpl {
+
+    public MyCustomRecordValidator(Map&lt;Integer, List&lt;FieldValidator&gt;&gt; fieldValidators) {
+        super(fieldValidators);
+    }
+
+    @Override
+    public String validateRecord(final Record record) {
+
+        String error = super.validateRecord(record);
+        if (error.isEmpty()) { //no errors after applying declared validators on each field
+
+            //add custom validation : field 2 content must starts with field 1 content
+            final String content1 = record.getFieldContentByIndex(0);
+            final String content2 = record.getFieldContentByIndex(1);
+            if (!content2.startsWith(content1)) {
+             return "field 2 content [" + content2 + "] must start with field 1 content [" + content1 + "]";
+            }
+        }
+        return ""; //empty value means no error
+    }
+}
+</pre>
+
+            <p>Once the custom validator implemented, we should tell CB4J to use it instead of the default one. This is done with the following API :</p>
+
+<pre class="prettyprint">
+Map&lt;Integer, List&lt;FieldValidator&gt;&gt; fieldValidators = new HashMap&lt;Integer, List&lt;FieldValidator&gt;&gt;();
+
+List&lt;FieldValidator> field1Validators = new ArrayList&lt;FieldValidator&gt;();
+final NotEmptyFieldValidator notEmptyFieldValidator = new NotEmptyFieldValidator();
+field1Validators.add(notEmptyFieldValidator);
+field1Validators.add(new FixedLengthFieldValidator(3));
+
+List&lt;FieldValidator> field2Validators = new ArrayList&lt;FieldValidator&gt;();
+field2Validators.add(notEmptyFieldValidator);
+
+fieldValidators.put(0, field1Validators);
+fieldValidators.put(1, field2Validators);
+
+MyCustomRecordValidator myCustomRecordValidator = new MyCustomRecordValidator(fieldValidators);
+batchConfiguration.registerRecordValidator(myCustomRecordValidator);
+</pre>
+
+            <div class="alert alert-info">
+                <span class="label label-info">Info</span> : field indexes in CSV records are zero-based.
+            </div>
+
+            <h4>3.4 Writing a custom reporter</h4>
+
+            <p>By default, CB4J generates a minimal report at the end of batch execution. An example of the default report is shown below :</p>
+
+<pre>
+[CB4J : INFO] CB4J report :
+[CB4J : INFO] Start time = Sun Aug 26 17:21:54 CEST 2012
+[CB4J : INFO] End time = Sun Aug 26 17:21:54 CEST 2012
+[CB4J : INFO] Batch duration = 181ms
+[CB4J : INFO] Total input records = 51
+[CB4J : INFO] Total ignored records = 0
+[CB4J : INFO] Total rejected records = 1
+[CB4J : INFO] Total processed records = 50
+</pre>
+
+            <p>As you can see, CB4J reports to the console the batch start time, end time , overall execution duration and other metrics about input records.
+                This simple report may not correspond to your requirement, and CB4J lets you extend or override it as you need.</p>
+
+            <p>In this section ,we will show how to override the default report with a chart report using the java free charting library <a href="http://www.jfree.org/jfreechart/">jfreechart</a>.
+                To override the default reporter behavior, we have to extend the <code class="prettyprint">DefaultBatchReporter</code> class and override the <code class="prettyprint">generateReport</code> method. The following listing shows a custom implementation that generates a simple Pie Chart instead of reporting information to the console.</p>
+
+<pre class="prettyprint">
+public class MyCustomBatchReporter extends DefaultBatchReporterImpl {
+
+    /**
+    * The file in which render the chart
+    */
+    private String reportFile;
+
+    public MyCustomBatchReporter(String reportFile) {
+        this.reportFile = reportFile;
+    }
+
+    @Override
+    public void generateReport() {
+        PieDataset dataset = createDataset();
+        JFreeChart chart = createChart(dataset);
+        try {
+            ChartUtilities.saveChartAsPNG(new File(reportFile), chart, 600, 400);
+        } catch (IOException e) {
+            System.err.println("an error occurred when generating chart report, using default report.");
+            super.generateReport();
+        }
+    }
+
+    /**
+    * Create a dataset with record metrics
+    * @return populated dataset
+    */
+    private PieDataset createDataset() {
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("Total ignored records",ignoredRecordsNumber);
+        dataset.setValue("Total rejected records", rejectedRecordsNumber);
+        dataset.setValue("Total processed records",inputRecordsNumber - (rejectedRecordsNumber + ignoredRecordsNumber));
+        return dataset;
+    }
+
+    /**
+    * Create a chart from a dataset
+    * @param dataset the input data set
+    * @return populated chart
+    */
+    private JFreeChart createChart(PieDataset dataset) {
+
+        JFreeChart chart = ChartFactory.createPieChart(
+        "My custom Batch Report", dataset, true, true, false
+        );
+
+        PiePlot plot = (PiePlot) chart.getPlot();
+        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+        plot.setCircular(false);
+        return chart;
+
+    }
+
+}
+</pre>
+
+            <p>The figure below shows a sample chart report generated with this implementation :</p>
+
+            <div align="center"><img src="../resources/img/customReport.jpg"/></div>
+
+            <br/>
+            <p>At this point, we have implemented a custom report generator, but how to tell CB4J to use this custom implementation instead of the default one?
+                CB4J API provides a method to register a custom batch reporter :</p>
+
+<pre class="prettyprint">
+batchConfiguration.registerBatchReporter(new MyCustomBatchReporter("/data/cb4j/chartReport.png"))
+</pre>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>CB4J : CSV Batch processing with Java made easy!</p>
+        <p>Maintained by <a href="https://github.com/benas">benas</a> at <a href="https://github.com/benas/cb4j">Github</a></p>
+    </footer>
+
+</div>
+
+<script src="../resources/js/jquery.js"></script>
+<script src="../resources/js/bootstrap.min.js"></script>
+
+</body></html>

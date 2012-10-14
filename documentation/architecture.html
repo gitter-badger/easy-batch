@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <title>CB4J</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="benas">
+
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+        .table td.center-td{
+            text-align: center;
+        }
+        .table th.center-td{
+            text-align: center;
+        }
+    </style>
+    <link href="../resources/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="../index.html">CB4J</a>
+            <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">Version: 1.0.0</p>
+                <ul class="nav">
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="dropdown active">
+                        <a id="documentation" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Documentation<b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="documentation">
+                            <li><a href="gettingStarted.html">Getting started</a></li>
+                            <li><a href="architecture.html">Architecture</a></li>
+                            <li><a href="userGuide.html">User Guide</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a id="tutorials" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="tutorials">
+                            <li><a href="../tutorials/hellocb4j.html">Hello CB4J!</a></li>
+                            <li><a href="../tutorials/customers.html">Customers ETL</a></li>
+                            <li><a href="../tutorials/products.html">Product Statistics</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">About CB4J</li>
+                    <li><a href="../index.html">Overview</a></li>
+                    <li><a href="../releaseNotes.html">Release notes</a></li>
+                    <li class="nav-header">Documentation</li>
+                    <li><a href="gettingStarted.html">Getting started</a></li>
+                    <li class="active"><a href="architecture.html">Architecture</a></li>
+                    <li><a href="userGuide.html">User Guide</a></li>
+                    <li class="nav-header">Tutorials</li>
+                    <li><a href="../tutorials/hellocb4j.html">Hello CB4J!</a></li>
+                    <li><a href="../tutorials/customers.html">Customers ETL</a></li>
+                    <li><a href="../tutorials/products.html">Product Statistics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="span9">
+
+            <div class="header">
+                <h1>Architecture</h1>
+            </div>
+
+            <div class="row-fluid">
+
+                <h3>1. CSV data model</h3>
+
+                <p>CB4J uses a very simple and natural data model for dealing with CSV files. The main classes are :</p>
+
+                <ul>
+                    <li><code>Field</code> : represents a field in a CSV record. A field has a content and an index</li>
+                    <li><code>Record</code> : represents a CSV record as an ordered list of fields</li>
+                </ul>
+
+                <p align="center"><img src="../resources/img/csv.png"/></p>
+                
+                These classes are defined in <code>net.benas.cb4j.core.model</code> package.
+
+                <h3>2. Main components</h3>
+
+                <p>The next figure illustrates the main CB4J components and gives an overview of the framework architecture:</p>
+                <p align="center"><img src="../resources/img/architecture.jpg"/></p>
+
+                <p>The main CB4J components are the following :</p>
+                <ul>
+                    <li>Record Parser : parses a record and splits it into a list of fields</li>
+                    <li>Record Validator : applies declared validation rules for each record</li>
+                    <li>Record Mapper : maps a record to a java object</li>
+                    <li>Record Processor : applies business processing logic for each record</li>
+                </ul>
+
+                <p>Each of these components needs to be configured to work properly and as expected. CB4J uses a declarative approach to register configuration parameters. A typical use case of configuring CB4J is to :</p>
+                <ul>
+                    <li>Provide CSV configuration parameters (Input file path, file encoding,field separator,etc)</li>
+                    <li>Register field validation rules (field size, data type and format,etc) that will be used by the record validator to validate data</li>
+                    <li>Register CSV to Object mapping logic that will be used by the record mapper</li>
+                    <li>Register record processing business logic that will be applied by the record processor</li>
+                </ul>
+
+                <p>All details about these steps can be found in the <a href="userGuide.html">user guide section</a>.</p>
+
+                <p>The following table summarizes what you need to do and what CB4J does for you :</p>
+
+                <table class="table table-bordered table-striped table-center">
+                    <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th class="center-td">You</th>
+                        <th class="center-td">CB4J</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Provide configuration parameters</td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Provide data validation logic</td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Provide CSV/Object mapping logic</td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Provide record processing logic</td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Handle I/O for input/log files</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Read input file line by line</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Check CSV record well-formedness</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Parse CSV record and split it into a list of fields</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Apply validation logic to each field/record</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Apply CSV/Object mapping logic</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Apply business processing logic</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Report batch statistics</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Generate log files for ignored/rejected records</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h3>3. Processing workflow</h3>
+
+                <p>The workflow used internally by CB4J is illustrated by the next figure and described below :</p>
+
+                <p align="center"><img src="../resources/img/workflow.png"/></p>
+
+                <ol>
+                    <li>The engine reads the input CSV file line by line until the end of file. If the end of file is reached, the engine generates the batch report and terminates the execution</li>
+                    <li>The next record is read as a string containing raw data</li>
+                    <li>The record parser checks the record for well-formedness : If the record is not well formed (actual size not equal to expected size), then the record is ignored and the engine moves to the next one. If the record is well formed, then it is passed to the next step to be parsed</li>
+                    <li>The record parser parses the current record to split it into fields ordered by index and containing raw data</li>
+                    <li>The record validator applies validation rules for each field. If a validation rule is violated for one field, then the record is rejected. If all fields are valid, then the parsed record is passed to the next step to be mapped to a java object</li>
+                    <li>At this point, the record mapper is supplied with a parsed record containing raw data that have passed the declared validation rules. The parsed record is mapped to the declared java object type. CB4J considers mapping exception as errors that should not pass the processing step. Hence, the engine rejects records that cannot be mapped to objects with typed fields. This is a design choice to minimize unexpected errors during record processing. <p><span class="label label-info">NB</span> : In a well designed batch, the record mapper should not have any problem in converting string values to typed values if all data is validated correctly at validation step.</p> </li>
+                    <li>Finally, the business logic is executed by the record processor. At this point, the record processor is supplied with a java object populated with validated and typed data.</li>
+                </ol>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>CB4J : CSV Batch processing with Java made easy!</p>
+        <p>Maintained by <a href="https://github.com/benas">benas</a> at <a href="https://github.com/benas/cb4j">Github</a></p>
+    </footer>
+
+</div>
+
+<script src="../resources/js/jquery.js"></script>
+<script src="../resources/js/bootstrap.min.js"></script>
+
+</body></html>
