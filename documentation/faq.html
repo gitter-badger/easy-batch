@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>CB4J</title>
+    <title>CB4J - FAQ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="benas">
 
@@ -12,20 +12,21 @@
     <link href="../resources/css/prettify.css" rel="stylesheet">
     <style type="text/css">
         body {
-            padding-top: 60px;
-            padding-bottom: 40px;
+        padding-top: 60px;
+        padding-bottom: 40px;
+        background-image: url('../resources/img/background.png');
         }
         .sidebar-nav {
-            padding: 9px 0;
+        padding: 9px 0;
         }
         .table td.center-td{
-            text-align: center;
+        text-align: center;
         }
         .table th.center-th{
-            text-align: center;
+        text-align: center;
         }
         .section {
-            padding-top: 40px;
+        padding-top: 40px;
         }
     </style>
     <link href="../resources/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -58,7 +59,7 @@
         <div class="container">
             <a class="brand" href="../index.html">CB4J</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 1.0.1</p>
+                <p class="navbar-text pull-right">Version: 1.0.2</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown active">
@@ -200,7 +201,7 @@ public class GreetingProcessor extends DefaultRecordProcessorImpl&lt;Greeting&gt
 
                 <h2 id="2" class="section">2. Does CB4J provide any implementation of CSV to Object mapping?</h2>
 
-                <p>No. CB4J does not provide any implementation of CSV to POJO mapping for performance reason. There are many techniques to map CSV records to java objects like : </p>
+                <p>No. CB4J does not provide any implementation of CSV to POJO mapping for performance reason. There are many techniques to map CSV records to Java objects like : </p>
 
                 <ul>
                     <li>Mapping CSV headers names to POJO properties</li>
@@ -209,7 +210,7 @@ public class GreetingProcessor extends DefaultRecordProcessorImpl&lt;Greeting&gt
                     <li>etc</li>
                 </ul>
 
-                <p>Unfortunately, all these techniques require the use of <a href="http://docs.oracle.com/javase/tutorial/reflect/index.html">Java Reflection API</a> to introspect dynamically POJO properties and popuplate them with CSV data. This is actually a performance killer in batch mode!</p>
+                <p>Unfortunately, all these techniques require the use of <a href="http://docs.oracle.com/javase/tutorial/reflect/index.html">Java Reflection API</a> to introspect dynamically POJO properties and populate them with CSV data. This is actually a performance killer in batch mode!</p>
                 <p>The listing below is an extract from <a href="http://docs.oracle.com/javase/tutorial/reflect/index.html">Java official documentation on reflection API</a>:</p>
 
                 <blockquote>
@@ -217,7 +218,7 @@ public class GreetingProcessor extends DefaultRecordProcessorImpl&lt;Greeting&gt
                     <p>Because reflection involves types that are dynamically resolved, certain Java virtual machine optimizations can not be performed. Consequently, reflective operations have slower performance than their non-reflective counterparts, and should be avoided in sections of code which are called frequently in performance-sensitive applications.</p>
                 </blockquote>
 
-                <p>Writing the mapping logic explicitly by the user (by implementing the <code class="prettyprint">net.benas.cb4j.core.api.RecordMapper</code> interface) is not costly even for POJOs with many properties and results in about <strong>500x</strong> faster code than using reflection as demonstrated in <a href="https://github.com/benas/cb4j/blob/master/cb4j-core/src/test/java/net/benas/cb4j/core/test/ReflectionPerformanceShowcase.java">the benchmark here</a>.</p>
+                <p>Writing the mapping logic explicitly by the user (by implementing the <code class="prettyprint">net.benas.cb4j.core.api.RecordMapper</code> interface) is not costly even for POJOs with many properties and this results in about <strong>100x</strong> faster code than using reflection as demonstrated in <a href="https://github.com/benas/cb4j/blob/master/cb4j-core/src/test/java/net/benas/cb4j/core/test/ReflectionPerformanceShowcase.java">the benchmark here</a>.</p>
 
                 <h2 id="3" class="section">3. CB4J does not provide built-in type conversion utilities, why?</h2>
 
@@ -243,7 +244,7 @@ public class GreetingProcessor extends DefaultRecordProcessorImpl&lt;Greeting&gt
 
                 <h2 id="5" class="section">5. Can I use Spring with CB4J?</h2>
 
-                <p>Not for the moment. This is planned to be implemented in version 1.2 as mentionned in the <a href="../releaseNotes.html">roadmap</a>. Stay tuned!</p>
+                <p>Not for the moment. This is planned to be implemented in version 1.3 as mentioned in the <a href="../releaseNotes.html">roadmap</a>. Stay tuned!</p>
 
             </div>
 
@@ -255,8 +256,7 @@ public class GreetingProcessor extends DefaultRecordProcessorImpl&lt;Greeting&gt
 
     <footer>
         <p class="pull-right"><a href="#"><i class="icon-circle-arrow-up"></i> Back to top</a></p>
-        <p>CB4J : CSV Batch processing with Java made easy!</p>
-        <p>Maintained by <a href="mailto:md.benhassine@gmail.com?subject=[CB4J]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/cb4j"><i class="icon-github"></i> Github</a></p>
+        <p>CB4J is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[CB4J]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/cb4j"><i class="icon-github"></i> Github</a></p>
     </footer>
 
 </div>
