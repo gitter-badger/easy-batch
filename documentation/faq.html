@@ -59,7 +59,7 @@
         <div class="container">
             <a class="brand" href="../index.html">CB4J</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 1.0.2</p>
+                <p class="navbar-text pull-right">Version: 1.1.0</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown active">
@@ -196,12 +196,12 @@ public class GreetingProcessor extends DefaultRecordProcessorImpl&lt;Greeting&gt
                 <p>In the typical <a href="architecture.html#3">CB4J workflow</a>, it is not the record processor role to validate records, but this is the most "natural" way to use Bean Validation with CB4J.</p>
 
                 <div class="alert alert-info">
-                    <span class="label label-info">Note</span> : To use Bean Validation with CB4J, you have to add a JSR 303 provider such as <a href="http://www.hibernate.org/subprojects/validator.html">Hibernate validator</a> in your classpath.
+                    <span class="label label-info">Note</span> To use Bean Validation with CB4J, you have to add a JSR 303 provider such as <a href="http://www.hibernate.org/subprojects/validator.html">Hibernate validator</a> in your classpath.
                 </div>
 
                 <h2 id="2" class="section">2. Does CB4J provide any implementation of CSV to Object mapping?</h2>
 
-                <p>No. CB4J does not provide any implementation of CSV to POJO mapping for performance reason. There are many techniques to map CSV records to Java objects like : </p>
+                <p>No. CB4J does not provide any implementation of CSV to POJO mapping for performance reason. There are many techniques to map CSV records to java objects like : </p>
 
                 <ul>
                     <li>Mapping CSV headers names to POJO properties</li>
@@ -240,11 +240,11 @@ public class GreetingProcessor extends DefaultRecordProcessorImpl&lt;Greeting&gt
 
                 <h2 id="4" class="section">4. Can I monitor CB4J execution with JMX?</h2>
 
-                <p>Yes. This feature is currently under development in the <a href="https://github.com/benas/cb4j/tree/cb4j-1.1">cb4j-1.1 branch</a> and will be available for next release version 1.1.</p>
+                <p>Yes. By default, CB4J enables a JMX MBean at startup. You can use any standard JMX compliant tool to monitor CB4J attributes. For more details about this feature, please refer to the <a href="userGuide.html#4">user guide</a>.</p>
 
                 <h2 id="5" class="section">5. Can I use Spring with CB4J?</h2>
 
-                <p>Not for the moment. This is planned to be implemented in version 1.3 as mentioned in the <a href="../releaseNotes.html">roadmap</a>. Stay tuned!</p>
+                <p>Not for the moment. This is planned to be implemented in version 1.2 as mentioned in the <a href="../releaseNotes.html#roadmap">roadmap</a>. Stay tuned!</p>
 
             </div>
 

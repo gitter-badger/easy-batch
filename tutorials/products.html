@@ -50,7 +50,7 @@
         <div class="container">
             <a class="brand" href="../index.html">CB4J</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 1.0.2</p>
+                <p class="navbar-text pull-right">Version: 1.1.0</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown">
@@ -113,7 +113,7 @@
             <div class="row-fluid">
 
                 <h2 id="1">1. Description</h2>
-                <p>In this tutorial, the goal is to process a CSV flat file containing products data and calculate statistics about prices. The products are organized in categories and the batch should calculate the minimum/maximum product prices for each category. The input file named "<strong>products.csv</strong>" has the following content:</p>
+                <p>In this tutorial, the goal is to process a CSV flat file containing products data and calculate statistics about prices. Products are organized in categories and the batch should calculate the minimum/maximum product price for each category. The input file named "<strong>products.csv</strong>" has the following content:</p>
 <pre>
 product_id;category_code;name;price
 1;1;product1;25
@@ -125,8 +125,8 @@ product_id;category_code;name;price
 </pre>
 
                 <p>In this tutorial , the business data validation rules are simple : Fields "product_id","category_code" and "price" must have numeric values.</p>
-                <p><span class="label label-info">Note :</span> Products prices should be converted to local currency before being processed. This is a good example of how to use the <code>preProcessRecord(T typedRecord)</code> method in <code>RecordProcessor&lt;T&gt;</code> interface.</p>
-                <p>The batch processing logic should calculate the minimum/maximum product prices for each category and generate the following report :</p>
+                <p><span class="label label-info">Note</span> Prices should be converted to local currency before being processed. This is a good example of how to use the <code>preProcessRecord(T typedRecord)</code> method in <code>RecordProcessor&lt;T&gt;</code> interface.</p>
+                <p>The batch processing logic should calculate the minimum/maximum product price for each category and generate the following report:</p>
 <pre>
 ******* Products Report *******
 Minimum prices by category :
@@ -137,7 +137,7 @@ Maximum prices by category :
         Max price for category 2 = 7.5
 </pre>
 
-                <p><span class="label label-info">Note :</span> The record <code>5;1;product5</code> must be ignored since it has an invalid size (the price is missing).<br/>The record <code>6;2;product6;xx</code> must be rejected since the product price is not numeric.</p>
+                <p><span class="label label-info">Note</span> The record <code>5;1;product5</code> must be ignored since it has an invalid size (the price is missing).<br/>The record <code>6;2;product6;xx</code> must be rejected since the product price is not numeric.</p>
                 <h2 id="2" class="section">2. Running the tutorial</h2>
 
                 <p>The complete source code of this tutorial is available <a href="https://github.com/benas/cb4j/tree/master/cb4j-tutorials/src/main/java/net/benas/cb4j/tutorials/products">here</a>.
