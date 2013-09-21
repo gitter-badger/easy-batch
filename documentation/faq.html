@@ -59,7 +59,7 @@
         <div class="container">
             <a class="brand" href="../index.html">CB4J</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 1.3.0</p>
+                <p class="navbar-text pull-right">Version: 1.4.0</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown active">
@@ -141,50 +141,31 @@
 
                 <ul>
                     <li>Annotate your POJO with Bean Validation API annotations</li>
-                    <li>Apply bean validation in the <code class="prettyprint">preProcessRecord(T typedRecord)</code> method of the <code class="prettyprint">net.benas.cb4j.core.api.RecordProcessor</code> interface</li>
-                    <li>Throw a <code class="prettyprint">net.benas.cb4j.core.api.RecordProcessingException</code> to not process invalid records</li>
+                    <li>Apply bean validation in the <code class="prettyprint">preProcessRecord(T typedRecord)</code> method of the <code class="prettyprint">io.github.benas.cb4j.core.api.RecordProcessor</code> interface</li>
+                    <li>Throw a <code class="prettyprint">io.github.benas.cb4j.core.api.RecordProcessingException</code> to not process invalid records</li>
                 </ul>
 
                 <p>You can find a complete example of using Bean Validation with CB4J <a href="../miscellaneous/beanValidation.html">here</a>.</p>
 
                 <h2 id="2" class="section">2. Does CB4J provide any implementation of CSV to Object mapping?</h2>
 
-                <p>No. CB4J does not provide any implementation of CSV to POJO mapping for performance reason. There are many techniques to map CSV records to java objects like : </p>
+                <p>Yes. CB4J provides a default CSV to Object mapper which uses field names in header record to map data to fields in domain object with the same name.</p>
 
-                <ul>
-                    <li>Mapping CSV headers names to POJO properties</li>
-                    <li>Using annotations on POJO properties</li>
-                    <li>Using XML mapping metadata</li>
-                    <li>etc</li>
-                </ul>
+                <p>Please refer to the <a href="userGuide.html#2.3">user guide</a> for more details about the default CSV/Object mapping strategy.</p>
 
-                <p>Unfortunately, all these techniques require the use of <a href="http://docs.oracle.com/javase/tutorial/reflect/index.html">Java Reflection API</a> to introspect dynamically POJO properties and populate them with CSV data. This is actually a performance killer in batch mode!</p>
-                <p>The listing below is an extract from <a href="http://docs.oracle.com/javase/tutorial/reflect/index.html">Java official documentation on reflection API</a>:</p>
+                <h2 id="3" class="section">3. Does CB4J provide built-in type conversion utilities ?</h2>
 
-                <blockquote>
-                    <p><span class="label label-important"><strong>Performance Overhead</strong></span></p>
-                    <p>Because reflection involves types that are dynamically resolved, certain Java virtual machine optimizations can not be performed. Consequently, reflective operations have slower performance than their non-reflective counterparts, and should be avoided in sections of code which are called frequently in performance-sensitive applications.</p>
-                </blockquote>
+                <p>Yes. The default record mapper converts raw textual data in CSV/FL records to typed data in your domain objects.</p>
 
-                <p>Writing the mapping logic explicitly by the user (by implementing the <code class="prettyprint">net.benas.cb4j.core.api.RecordMapper</code> interface) is not costly even for POJOs with many properties and this results in about <strong>100x</strong> faster code than using reflection as demonstrated in <a href="https://github.com/benas/cb4j/blob/master/cb4j-core/src/test/java/net/benas/cb4j/core/test/ReflectionPerformanceShowcase.java">the benchmark here</a>.</p>
+                <p>By default, CB4J can convert textual data to common built-in Java types such as Boolean, Integer, Date, etc. For all details about supported types, please refer to the package <code class="prettyprint">io.github.benas.cb4j.core.converter</code>.</p>
+                <p>CB4J uses JDK's built-in types conversion utilities behind the scene (<code class="prettyprint">Integer.parseInt(String)</code>, <code class="prettyprint">Double.parseDouble(String),</code> etc).</p>
+                <p>If CB4J's built-in utilities are not sufficient, you can provide your own type converter by implementing the <code class="prettyprint">io.github.benas.cb4j.core.api.TypeConverter</code> interface and registering your implementation as follows:</p>
 
-                <h2 id="3" class="section">3. CB4J does not provide built-in type conversion utilities, why?</h2>
+<pre class="prettyprint">
+batchConfiguration.registerTypeConverter(MyType.class, new myTypeConverter());
+</pre>
 
-                <p>There are already built-in data conversion utilities in the JDK that can be used for that purpose :</p>
-                <ul>
-                    <li><code class="prettyprint">Integer.parseInt(String)</code>, <code class="prettyprint">Double.parseDouble(String),</code> etc</li>
-                    <li><code class="prettyprint">java.text</code> and <code class="prettyprint">java.text.spi</code> packages (Date,Number,Currency)</li>
-                </ul>
-                <p>In a well designed CB4J batch, data validation step should ensure that all data types are valid so that data conversion in mapping step does not encounter any issue using these utilities.</p>
-                <p>If JDK's built-in utilities are not sufficient, you can always use well established and excellent tools such as :
-                <ul>
-                    <li><a href="http://commons.apache.org/beanutils/">Apache Commons BeanUtils</a></li>
-                    <li><a href="http://joda-convert.sourceforge.net/">Joda Convert</a></li>
-                    <li><a href="http://static.springsource.org/spring/docs/3.0.x/reference/validation.html">Spring 3 Type conversion</a></li>
-                    <li><a href="http://dozer.sourceforge.net/">Dozer</a></li>
-                </ul>
-
-                <p>CB4J does not provide data conversion utilities simply to not reinvent the wheel!</p>
+                <p>If you decided to implement your own mapper, you can always use the built-in type converters which are sufficient in most cases, and if not, register your own implementation as shown above.</p>
 
                 <h2 id="4" class="section">4. Can I monitor CB4J execution with JMX?</h2>
 
@@ -202,8 +183,9 @@
                 <p>For all details about Fixed-Length Record parsing support, please refer to the <a href="userGuide.html">user guide</a>.</p>
 
                 <h2 id="7" class="section">7. Does CB4J provide transaction support?</h2>
-                <p>Yes. CB4J version 1.3 adds basic record processing transaction support through the <code class="prettyprint">net.benas.cb4j.core.api.RollBackHandler</code> interface.</p>
+                <p>Yes. CB4J provides basic record processing transaction support through the <code class="prettyprint">io.github.benas.cb4j.core.api.RollBackHandler</code> interface.</p>
                 <p>This interface is a callback interface that allows you to define the rollback code to execute whenever an unexpected exception occurs during record processing.</p>
+                <p>The term transaction here does not refer to database transactions! It is a simple way to rollback record processing when things go wrong.</p>
                 <p>For all details about CB4J transaction support, please refer to the <a href="userGuide.html#2.5">user guide</a>.</p>
 
             </div>
