@@ -3,7 +3,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta charset="utf-8">
-    <title>CB4J - Release notes</title>
+    <title>Easy Batch - Release notes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="benas">
 
@@ -11,8 +11,7 @@
     <style type="text/css">
         body {
             padding-top: 60px;
-            padding-bottom: 40px;
-            background-image: url('resources/img/background.png');
+            padding-bottom: 15px;
         }
         .sidebar-nav {
             padding: 9px 0;
@@ -21,8 +20,6 @@
     <link href="./resources/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="./resources/css/font-awesome.css" rel="stylesheet">
     <link href="./resources/css/sidebar.css" rel="stylesheet">
-
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
     <script type="text/javascript">
 
@@ -42,12 +39,12 @@
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="./index.html">CB4J</a>
+            <a class="brand" href="./index.html">Easy Batch</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 1.4.0</p>
+                <p class="navbar-text pull-right">Version: 2.0.0</p>
                 <ul class="nav">
                     <li class="active"><a href="./index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown">
@@ -56,25 +53,22 @@
                             <li><a href="./documentation/gettingStarted.html">Getting started</a></li>
                             <li><a href="./documentation/architecture.html">Architecture</a></li>
                             <li><a href="./documentation/userGuide.html">User Guide</a></li>
-                            <li><a href="./documentation/faq.html">CB4J FAQ</a></li>
+                            <li><a href="./documentation/faq.html">FAQ</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a id="tutorials" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-folder-open"></i> Tutorials<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="tutorials">
                             <li><a href="./tutorials/helloworld.html">Hello World!</a></li>
-                            <li><a href="./tutorials/customers.html">Customers ETL</a></li>
                             <li><a href="./tutorials/products.html">Product Statistics</a></li>
-                            <li><a href="./tutorials/library.html">Book Library</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a id="miscellaneous" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-asterisk"></i> Miscellaneous<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="miscellaneous">
-                            <li><a href="./miscellaneous/spring.html">Using Spring with CB4J</a></li>
-                            <li><a href="./miscellaneous/quartz.html">Scheduling CB4J with Quartz</a></li>
-                            <li><a href="./miscellaneous/jmx.html">Monitoring CB4J with JMX</a></li>
-                            <li><a href="./miscellaneous/beanValidation.html">Using Bean Validation</a></li>
+                            <li><a href="./miscellaneous/spring.html">Using Easy Batch with Spring</a></li>
+                            <li><a href="./miscellaneous/quartz.html">Scheduling Easy Batch with Quartz</a></li>
+                            <li><a href="./miscellaneous/jmx.html">Monitoring Easy Batch with JMX</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -89,24 +83,21 @@
         <div class="span3">
             <div class="well sidebar-nav bs-docs-sidenav" data-spy="affix">
                 <ul class="nav nav-list">
-                    <li class="nav-header">About CB4J</li>
+                    <li class="nav-header"><i class="icon-home"></i> About Easy Batch</li>
                     <li><a href="./index.html">Overview</a></li>
                     <li class="active"><a href="./releaseNotes.html">Release notes</a></li>
-                    <li class="nav-header">Documentation</li>
+                    <li class="nav-header"><i class="icon-book"></i> Documentation</li>
                     <li><a href="./documentation/gettingStarted.html">Getting started</a></li>
                     <li><a href="./documentation/architecture.html">Architecture</a></li>
                     <li><a href="./documentation/userGuide.html">User Guide</a></li>
-                    <li><a href="./documentation/faq.html">CB4J FAQ</a></li>
-                    <li class="nav-header">Tutorials</li>
+                    <li><a href="./documentation/faq.html">FAQ</a></li>
+                    <li class="nav-header"><i class="icon-folder-open"></i> Tutorials</li>
                     <li><a href="./tutorials/helloworld.html">Hello World!</a></li>
-                    <li><a href="./tutorials/customers.html">Customers ETL</a></li>
                     <li><a href="./tutorials/products.html">Product Statistics</a></li>
-                    <li><a href="./tutorials/library.html">Book Library</a></li>
-                    <li class="nav-header">Miscellaneous</li>
-                    <li><a href="./miscellaneous/spring.html">Using Spring with CB4J</a></li>
-                    <li><a href="./miscellaneous/quartz.html">Scheduling CB4J with Quartz</a></li>
-                    <li><a href="./miscellaneous/jmx.html">Monitoring CB4J with JMX</a></li>
-                    <li><a href="./miscellaneous/beanValidation.html">Using Bean Validation</a></li>
+                    <li class="nav-header"><i class="icon-asterisk"></i> Miscellaneous</li>
+                    <li><a href="./miscellaneous/spring.html">Using Easy Batch with Spring</a></li>
+                    <li><a href="./miscellaneous/quartz.html">Scheduling Easy Batch with Quartz</a></li>
+                    <li><a href="./miscellaneous/jmx.html">Monitoring Easy Batch with JMX</a></li>
                 </ul>
             </div>
         </div>
@@ -119,9 +110,26 @@
 
             <div class="row-fluid">
 
-                <h2>Current stable version : 1.4.0 (2013-09-21)</h2>
+                <h2>Current stable version : 2.0.0 (2014-01-12)</h2>
 
-                <p>This is the latest stable version of CB4J. This release adds many new features such as:</p>
+                <p>This is the first stable version of Easy Batch in the 2.x branch. This version brings a big refactoring to the former CB4J
+                    framework to make it able to process not only CSV input but also any type of input. This release adds many new features such as:</p>
+                <ul>
+                    <li>New Record interface for generic input data type</li>
+                    <li>Record filtering through the RecordFilter API which allows to skip records from being processed by the engine</li>
+                    <li>Redesigned validation approach which is now well integrated with the Bean Validation API (JSR303)</li>
+                    <li>Simplified logging through a single and centralised log file</li>
+                    <li>New EasyBatchReportFormatter API to format Easy Batch reports to a specific format (HTML, PDF, etc)</li>
+                    <li>Updated documentation and Javadoc</li>
+                </ul>
+
+                <p>Please check the <a href="https://github.com/benas/easy-batch/blob/master/CHANGELOG.txt" target="_blank">change log</a> for all details about changes.</p>
+
+                <h2>Prior versions</h2>
+
+                <h3>Version : 1.4.0 (2013-09-21)</h3>
+
+                <p>This release adds many new features such as:</p>
                 <ul>
                     <li>New BatchResultHolder API to be able to get computation result at the end of batch execution</li>
                     <li>New CSV/Object mapper implementation to map records to domain objects based on field names declared in header record</li>
@@ -130,10 +138,6 @@
                     <li>New validators to validate that date value is before/after a given date</li>
                     <li>New validators to validate that field field content size has a min/max length</li>
                 </ul>
-
-                <p>This release also fixes many issues reported in previous version. Please check the <a href="https://github.com/benas/cb4j/blob/master/src/main/resources/CHANGELOG.txt">change log</a> for all details about changes.</p>
-
-                <h2>Prior versions</h2>
 
                 <h3>Version 1.3.0 (2013-04-21)</h3>
 
@@ -154,7 +158,7 @@
                     <li>Spring integration use case</li>
                 </ul>
 
-                <p>This release also includes some minor API changes and documentation updates. Please check the <a href="https://github.com/benas/cb4j/blob/master/src/main/resources/CHANGELOG.txt">change log</a> for all details about changes.</p>
+                <p>This release also includes some minor API changes and documentation updates. Please check the <a href="https://github.com/benas/easy-batch/blob/master/CHANGELOG.txt" target="_blank">change log</a> for all details about changes.</p>
 
                 <h3>Version 1.1.0 (2012-12-08)</h3>
 
@@ -167,17 +171,17 @@
                     <li>More precise reporting about records processed with errors</li>
                 </ul>
 
-                <p>For all details about changes in this release, please refer to the <a href="https://github.com/benas/cb4j/blob/master/src/main/resources/CHANGELOG.txt">change log</a>.</p>
+                <p>For all details about changes in this release, please refer to the <a href="https://github.com/benas/easy-batch/blob/master/CHANGELOG.txt" target="_blank">change log</a>.</p>
 
                 <h3>Version 1.0.2 (2012-12-01)</h3>
 
                 <p>This is the second maintenance release in the 1.0.x branch. This release adds some minor changes to support loading configuration parameters file from the classpath.
-                    It also fixes a performance issue due to String concatenation. For all details about changes in this release, please refer to the <a href="https://github.com/benas/cb4j/blob/master/src/main/resources/CHANGELOG.txt">change log</a>.</p>
+                    It also fixes a performance issue due to String concatenation. For all details about changes in this release, please refer to the <a href="https://github.com/benas/easy-batch/blob/master/CHANGELOG.txt" target="_blank">change log</a>.</p>
 
                 <h3>Version 1.0.1 (2012-11-01)</h3>
 
                 <p>This is the first maintenance release in the 1.0.x branch. The release includes multiple performance optimizations, bugfixes and documentation updates.
-                   The full list of changes may be found in the <a href="https://github.com/benas/cb4j/blob/master/src/main/resources/CHANGELOG.txt">change log</a>.</p>
+                   The full list of changes may be found in the <a href="https://github.com/benas/easy-batch/blob/master/CHANGELOG.txt" target="_blank">change log</a>.</p>
 
                 <h3>Version 1.0.0 (2012-10-14)</h3>
 
@@ -187,21 +191,6 @@
                     <li>Initial core API and Implementation</li>
                     <li>Common data type validators</li>
                 </ul>
-
-                <div class="page-header" id="roadmap" >
-                    <h1><i class="icon-road"></i> Roadmap</h1>
-                </div>
-
-                <p>Many features are currently under development and will be available in next version:</p>
-
-                    <h3>Version 1.5 :</h3>
-                        <ul>
-                            <li>Add annotation-based configuration support</li>
-                            <li>Add xml-based configuration support</li>
-                            <li>Add statistics module to report processing time for each record</li>
-                            <li>Add graphical configuration utility for all CB4J parameters</li>
-                            <li>Add parallelism support to split input file into multiple partitions, run parallel CB4J instances and then merge results</li>
-                        </ul>
 
             </div>
 
@@ -213,7 +202,7 @@
 
     <footer>
         <p class="pull-right"><a href="#"><i class="icon-circle-arrow-up"></i> Back to top</a></p>
-        <p>CB4J is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[CB4J]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/cb4j"><i class="icon-github"></i> Github</a></p>
+        <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Github</a></p>
     </footer>
 
 </div>

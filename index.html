@@ -3,7 +3,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta charset="utf-8">
-    <title>CB4J - Home</title>
+    <title>Easy Batch - Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="benas">
 
@@ -11,8 +11,7 @@
     <style type="text/css">
         body {
             padding-top: 60px;
-            padding-bottom: 40px;
-            background-image: url('resources/img/background.png');
+            padding-bottom: 15px;
         }
         .sidebar-nav {
             padding: 9px 0;
@@ -21,8 +20,6 @@
     <link href="./resources/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="./resources/css/font-awesome.css" rel="stylesheet">
     <link href="./resources/css/sidebar.css" rel="stylesheet">
-
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
     <script type="text/javascript">
 
@@ -42,12 +39,12 @@
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="./index.html">CB4J</a>
+            <a class="brand" href="./index.html">Easy Batch</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 1.4.0</p>
+                <p class="navbar-text pull-right">Version: 2.0.0</p>
                 <ul class="nav">
                     <li class="active"><a href="./index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown">
@@ -56,25 +53,22 @@
                             <li><a href="./documentation/gettingStarted.html">Getting started</a></li>
                             <li><a href="./documentation/architecture.html">Architecture</a></li>
                             <li><a href="./documentation/userGuide.html">User Guide</a></li>
-                            <li><a href="./documentation/faq.html">CB4J FAQ</a></li>
+                            <li><a href="./documentation/faq.html">FAQ</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a id="tutorials" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-folder-open"></i> Tutorials<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="tutorials">
-                            <li><a href="./tutorials/helloworld.html">Hello World!</a></li>
-                            <li><a href="./tutorials/customers.html">Customers ETL</a></li>
+                            <li><a href="./tutorials/helloworld.html">Hello World!</a></li>                            
                             <li><a href="./tutorials/products.html">Product Statistics</a></li>
-                            <li><a href="./tutorials/library.html">Book Library</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a id="miscellaneous" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-asterisk"></i> Miscellaneous<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="miscellaneous">
-                            <li><a href="./miscellaneous/spring.html">Using Spring with CB4J</a></li>
-                            <li><a href="./miscellaneous/quartz.html">Scheduling CB4J with Quartz</a></li>
-                            <li><a href="./miscellaneous/jmx.html">Monitoring CB4J with JMX</a></li>
-                            <li><a href="./miscellaneous/beanValidation.html">Using Bean Validation</a></li>
+                            <li><a href="./miscellaneous/spring.html">Using Easy Batch with Spring</a></li>
+                            <li><a href="./miscellaneous/quartz.html">Scheduling Easy Batch with Quartz</a></li>
+                            <li><a href="./miscellaneous/jmx.html">Monitoring Easy Batch with JMX</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -86,42 +80,15 @@
 <div class="container">
     <div class="row-fluid">
 
-        <div class="span3">
-            <div class="well sidebar-nav bs-docs-sidenav" data-spy="affix">
-                <ul class="nav nav-list">
-                    <li class="nav-header">About CB4J</li>
-                    <li class="active"><a href="./index.html">Overview</a></li>
-                    <li><a href="./releaseNotes.html">Release notes</a></li>
-                    <li class="nav-header">Documentation</li>
-                    <li><a href="./documentation/gettingStarted.html">Getting started</a></li>
-                    <li><a href="./documentation/architecture.html">Architecture</a></li>
-                    <li><a href="./documentation/userGuide.html">User Guide</a></li>
-                    <li><a href="./documentation/faq.html">CB4J FAQ</a></li>
-                    <li class="nav-header">Tutorials</li>
-                    <li><a href="./tutorials/helloworld.html">Hello World!</a></li>
-                    <li><a href="./tutorials/customers.html">Customers ETL</a></li>
-                    <li><a href="./tutorials/products.html">Product Statistics</a></li>
-                    <li><a href="./tutorials/library.html">Book Library</a></li>
-                    <li class="nav-header">Miscellaneous</li>
-                    <li><a href="./miscellaneous/spring.html">Using Spring with CB4J</a></li>
-                    <li><a href="./miscellaneous/quartz.html">Scheduling CB4J with Quartz</a></li>
-                    <li><a href="./miscellaneous/jmx.html">Monitoring CB4J with JMX</a></li>
-                    <li><a href="./miscellaneous/beanValidation.html">Using Bean Validation</a></li>
-                </ul>
-            </div>
-        </div>
+        <div class="span10 offset1">
 
-        <div class="span9">
+            <div class="hero-unit well">
 
-            <div class="hero-unit">
+                <h2>Easy Batch : batch processing with Java made easy!</h2>
+                <p>Easy Batch is a framework that aims to simplify batch processing with Java. 
+                    It addresses common tedious tasks such as reading, filtering and validating input data and lets you concentrate on your batch processing business logic.</p>
 
-                <h2>CB4J : CSV batch processing with Java made easy!</h2>
-                <p>CSV Batch For Java is a framework that aims to simplify CSV files batch processing.</p>
-                <p>CB4J addresses common tedious tasks such as reading, parsing and validating CSV records and lets you concentrate on your batch processing business logic.</p>
-                <h2>License</h2>
-                <p>CB4J is released under the <a href="http://opensource.org/licenses/mit-license.php/">MIT license</a>.</p>
-                <hr/>
-                <div align="center">
+                <div class="row" align="center">
                     <div class="span4"><a class="btn btn-primary btn-large" href="./documentation/gettingStarted.html">Get started »</a></div>
                     <div class="span4"><a class="btn btn-primary btn-large" href="./tutorials/helloworld.html">2 Minutes Tutorial »</a></div>
                     <div class="span4"><a class="btn btn-primary btn-large" href="./documentation/userGuide.html">User guide »</a></div>
@@ -136,31 +103,39 @@
             <div class="row-fluid">
                 <div class="span4">
                     <h2><img src="./resources/img/feather.png"> Lightweight framework</h2>
-                    <p>CB4J has no dependencies and hence a small memory footprint : a 70Ko jar file with a lot of features!</p>
+                    <p>Easy Batch has no dependencies and hence a small memory footprint : a 20Ko jar file with a lot of features!</p>
                 </div>
                 <div class="span4">
                     <h2><img src="./resources/img/pojo.png"> POJO-based development</h2>
-                    <p>Map CSV records to your domain objects so you can still work with the Object Oriented aspect of Java.</p>
+                    <p>Map records to your domain objects so you can still work with the Object Oriented aspect of Java.</p>
                 </div>
                 <div class="span4">
                     <h2><img src="./resources/img/validation.png"> Declarative data validation</h2>
-                    <p>CB4J lets you declare data validation constraints with extensible built-in validators for common requirements.</p>
+                    <p>Easy Batch lets you declare data validation on domain objects and handles the validation code for you.</p>
                 </div>
             </div>
             <div class="row-fluid">
                 <div class="span4">
                     <h2><img src="./resources/img/learn.png"> Easy to learn and use</h2>
-                    <p>CB4J uses a simple and natural CSV model and API. You can learn it easily and start using it quickly.</p>
+                    <p>Easy Batch uses a simple and natural data model and API. You can learn it easily and start using it quickly.</p>
                 </div>
                 <div class="span4">
                     <h2><img src="./resources/img/statistics.png"> Statistics reporting</h2>
-                    <p>CB4J provides a simple and customizable reporting for common statistics including validation errors and processing time.</p>
+                    <p>Easy Batch provides a simple and customizable reporting tools for common statistics including validation errors and processing time.</p>
                 </div>
                 <div class="span4">
                     <h2><img src="./resources/img/monitor.png"> JMX monitoring</h2>
-                    <p>Monitor your batch execution and progress using JMX at runtime and in real time.</p>
+                    <p>With Easy Batch, you can monitor your batch execution and progress using JMX at runtime and in real time.</p>
                 </div>
             </div>
+
+            <div class="page-header">
+                <h2>License</h2>
+            </div>
+            <div class="row-fluid">
+                <p>Easy Batch is open source and is released under the <a href="http://opensource.org/licenses/mit-license.php/" target="_blank">MIT license</a>.</p>
+            </div>
+            
 
         </div>
 
@@ -170,7 +145,7 @@
 
     <footer>
         <p class="pull-right"><a href="#"><i class="icon-circle-arrow-up"></i> Back to top</a></p>
-        <p>CB4J is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[CB4J]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/cb4j"><i class="icon-github"></i> Github</a></p>
+        <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Github</a></p>
     </footer>
 
 </div>

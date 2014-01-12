@@ -3,7 +3,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta charset="utf-8">
-    <title>CB4J - Tutorials</title>
+    <title>Easy Batch - Tutorials</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="benas">
 
@@ -12,21 +12,22 @@
     <style type="text/css">
         body {
             padding-top: 60px;
-            padding-bottom: 40px;
-            background-image: url('../resources/img/background.png');
+            padding-bottom: 15px;
         }
         .sidebar-nav {
             padding: 9px 0;
         }
-        .section {
-            padding-top: 40px;
+        .table td.center-td{
+            text-align: center;
+        }
+        .table th.center-th{
+            text-align: center;
         }
     </style>
     <link href="../resources/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="../resources/css/font-awesome.css" rel="stylesheet">
     <link href="../resources/css/sidebar.css" rel="stylesheet">
 
-    <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script type="text/javascript" src="../resources/js/prettify.js"></script>
 
     <script type="text/javascript">
@@ -47,12 +48,12 @@
 
 <body onload="prettyPrint()">
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="../index.html">CB4J</a>
+            <a class="brand" href="../index.html">Easy Batch</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 1.4.0</p>
+                <p class="navbar-text pull-right">Version: 2.0.0</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown">
@@ -61,25 +62,22 @@
                             <li><a href="../documentation/gettingStarted.html">Getting started</a></li>
                             <li><a href="../documentation/architecture.html">Architecture</a></li>
                             <li><a href="../documentation/userGuide.html">User Guide</a></li>
-                            <li><a href="../documentation/faq.html">CB4J FAQ</a></li>
+                            <li><a href="../documentation/faq.html">FAQ</a></li>
                         </ul>
                     </li>
                     <li class="dropdown active">
                         <a id="tutorials" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-folder-open"></i> Tutorials<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="tutorials">
                             <li><a href="helloworld.html">Hello World!</a></li>
-                            <li><a href="customers.html">Customers ETL</a></li>
                             <li><a href="products.html">Product Statistics</a></li>
-                            <li><a href="library.html">Book Library</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a id="miscellaneous" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-asterisk"></i> Miscellaneous<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="miscellaneous">
-                            <li><a href="../miscellaneous/spring.html">Using Spring with CB4J</a></li>
-                            <li><a href="../miscellaneous/quartz.html">Scheduling CB4J with Quartz</a></li>
-                            <li><a href="../miscellaneous/jmx.html">Monitoring CB4J with JMX</a></li>
-                            <li><a href="../miscellaneous/beanValidation.html">Using Bean Validation</a></li>
+                            <li><a href="../miscellaneous/spring.html">Using Easy Batch with Spring</a></li>
+                            <li><a href="../miscellaneous/quartz.html">Scheduling Easy Batch with Quartz</a></li>
+                            <li><a href="../miscellaneous/jmx.html">Monitoring Easy Batch with JMX</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -94,31 +92,21 @@
     <div class="span3">
         <div class="well sidebar-nav bs-docs-sidenav" data-spy="affix">
                 <ul class="nav nav-list">
-                    <li class="nav-header">About CB4J</li>
+                    <li class="nav-header"><i class="icon-home"></i> About Easy Batch</li>
                     <li><a href="../index.html">Overview</a></li>
                     <li><a href="../releaseNotes.html">Release notes</a></li>
-                    <li class="nav-header">Documentation</li>
+                    <li class="nav-header"><i class="icon-book"></i> Documentation</li>
                     <li><a href="../documentation/gettingStarted.html">Getting started</a></li>
                     <li><a href="../documentation/architecture.html">Architecture</a></li>
                     <li><a href="../documentation/userGuide.html">User Guide</a></li>
-                    <li><a href="../documentation/faq.html">CB4J FAQ</a></li>
-                    <li class="nav-header">Tutorials</li>
-                    <li class="active">
-                        <a href="helloworld.html">Hello World!</a>
-                        <ul>
-                            <li><a href="helloworld.html#1">1. Description</a></li>
-                            <li><a href="helloworld.html#2">2. Expected results</a></li>
-                            <li><a href="helloworld.html#3">3. Implementation using CB4J</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="customers.html">Customers ETL</a></li>
+                    <li><a href="../documentation/faq.html">FAQ</a></li>
+                    <li class="nav-header"><i class="icon-folder-open"></i> Tutorials</li>
+                    <li class="active"><a href="helloworld.html">Hello World!</a></li>
                     <li><a href="products.html">Product Statistics</a></li>
-                    <li><a href="library.html">Book Library</a></li>
-                    <li class="nav-header">Miscellaneous</li>
-                    <li><a href="../miscellaneous/spring.html">Using Spring with CB4J</a></li>
-                    <li><a href="../miscellaneous/quartz.html">Scheduling CB4J with Quartz</a></li>
-                    <li><a href="../miscellaneous/jmx.html">Monitoring CB4J with JMX</a></li>
-                    <li><a href="../miscellaneous/beanValidation.html">Using Bean Validation</a></li>
+                    <li class="nav-header"><i class="icon-asterisk"></i> Miscellaneous</li>
+                    <li><a href="../miscellaneous/spring.html">Using Easy Batch with Spring</a></li>
+                    <li><a href="../miscellaneous/quartz.html">Scheduling Easy Batch with Quartz</a></li>
+                    <li><a href="../miscellaneous/jmx.html">Monitoring Easy Batch with JMX</a></li>
                 </ul>
             </div>
         </div>
@@ -132,12 +120,16 @@
             <div class="row-fluid">
 
                 <h2 id="1">1. Description</h2>
-                <p>This tutorial is a Hello World example of using CB4J. We will process a simple CSV file containing persons records and generate greetings.
-                   The input file named "<strong>persons.csv</strong>" has the following format:</p>
+                <p>This tutorial is a Hello World example of how to use Easy Batch.
+                    We will process a simple CSV file containing greeting records and generate greeting messages.
+                   The input file named <code>greetings.csv</code> has the following content:</p>
 <pre class="prettyprint">
-sequence,name
-1,Foo
-2,Bar
+#sequence,name
+1,foo
+x,foo
+2,bar
+3,baz
+4,
 </pre>
                 <p>Each record is composed of 2 fields :</p>
                 <ul>
@@ -145,28 +137,16 @@ sequence,name
                     <li>a person name</li>
                 </ul>
 
-                <p>The processing logic should generate a greeting message for each record.
-                   For example, for the record <code>1,Foo</code>, the batch should generate and print to the console the following greeting message : <code>Hi Foo! your sequence number is 1.</code></p>
-                <p>Finally, the first record is a header record that should be skipped from batch processing.</p>
+                <p>For each record, the batch application should print to the console a greeting of the format : <em>Hi foo! Your sequence number is 1</em> .</p>
 
-                <h2 id="2" class="section">2. Implementation using CB4J</h2>
-                <h3 id="2.1">2.1 Configuration</h3>
-                <p>First, we need to configure CB4J with CSV parameters. By default, CB4J uses the comma ',' character as delimiter which is fine for this tutorial, so no configuration is needed for field delimiter.</p>
-                <p>Nevertheless, we have to specify the path of input file and the <strong>skipHeader</strong> parameters. This can be done using the <code class="prettyprint">BatchConfigurationBuilder</code> as follows :</p>
-<pre class="prettyprint">
-BatchConfiguration batchConfiguration = new BatchConfigurationBuilder()
-        .inputDataFile("/data/cb4j/cb4j-tutorials/src/main/resources/persons.csv")
-        .skipHeader(true)
-        .build();
-</pre>
-
-                <h3 id="2.2">2.2 Mapping CSV records to Java objects</h3>
-                <p>When using CB4J, you work with an object view of CSV records, so we will create a simple POJO representing a greeting. The <code class="prettyprint">Greeting</code> class is defined as follows:</p>
+                <p>Easy Batch is POJO-based, so we would like to map each record to an instance of the following <code>Greeting</code> bean:</p>
 <pre class="prettyprint">
 public class Greeting {
 
+    @Max(2)
     private long sequence;
 
+    @NotEmpty
     private String name;
 
     // Getters and Setters omitted
@@ -176,95 +156,165 @@ public class Greeting {
     }
 }
 </pre>
+                       <p>This greeting bean is annotated with Bean Validation API annotations and we would like to process only valid records:</p>
+                <ul>
+                    <li>The sequence number must be less than or equal to 2</li>
+                    <li>The name must not be empty</li>
+                </ul>
+                <p>With these validation constraints, records number 3, 5 and 6 should be rejected.</p>
 
-                <p>To map CSV records to <code class="prettyprint">Greeting</code> objects, CB4J will use field names in header record to map data to fields in <code class="prettyprint">Greeting</code> class with the same name.</p>
-                <p>In this example, the first field <code class="prettyprint">sequence</code> in CSV record will be mapped to the field <code class="prettyprint">sequence</code> in <code class="prettyprint">Greeting</code> Object. This is the same for the <code class="prettyprint">name</code> field. The figure below shows how the default mapper works:</p>
+                <p>Finally, we should skip the header record from being processed since it only describes the flat file record format.</p>
 
-                <div align="center"><img src="../resources/img/csv-pojo-mapping.png"/></div>
+                <p>You will see that all these requirements can be easily implemented using Easy Batch, so let's get started!</p>
 
-                <p>CB4J will also convert raw textual data in the CSV file to typed data according to field type of the domain object. For instance, <code class="prettyprint">sequence</code> values in CSV records will be converted to the type <code class="prettyprint">long</code> as defined in <code class="prettyprint">Greeting</code> Object.</p>
-
-                <h3 id="2.3">2.3 Processing records</h3>
-                <p>It is time to define the business processing logic which consists in this tutorial of printing to the console a greeting message for each person. This can be done by implementing the <code class="prettyprint">RecordProcessor&lt;T&gt;</code> interface or extending the <code class="prettyprint">DefaultRecordProcessorImpl&lt;T&gt;</code> class as follows:</p>
+                <h2 id="2">2. Implementation using Easy Batch</h2>
+                <p>The goal of Easy Batch is to let you concentrate on your batch processing logic and to handle all the plumbing code of reading, mapping and validating records.</p>
+                <p>So first, let's implement our batch processing logic by extending the <code>AbstractRecordProcessor</code> class:</p>
 <pre class="prettyprint">
-public class GreetingProcessor extends DefaultRecordProcessorImpl&lt;Greeting&gt; {
+public class GreetingProcessor extends AbstractRecordProcessor&lt;Greeting&gt; {
 
     @Override
-    public void processRecord(Greeting greeting) throws RecordProcessingException {
+    public void processRecord(Greeting greeting) throws Exception {
         System.out.println(greeting.getGreetingMessage());
     }
 
 }
 </pre>
+                <p>This processor will print the greeting message for each input record as required.</p>
+                <p>Actually, we have almost finished our batch implementation! We should know configure Easy Batch engine to :<p>
+                <ol>
+                    <li>Read records from the <code>greetings.csv</code> flat file</li>
+                    <li>Filter records starting with # (mainly the header record)</li>
+                    <li>Map each record to an instance of the <code>Greeting</code> bean</li>
+                    <li>Validate each record using the Bean Validation API</li>
+                    <li>Process each record using our <code>GreetingProcessor</code></li>
+                </ol>
 
-                <p>Then, we have to register this implementation to be used by CB4J to process records :</p>
+                <p>The following listing provides this configuration:</p>
 <pre class="prettyprint">
-batchConfiguration.registerRecordProcessor(new GreetingProcessor());
+EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
+    .registerRecordReader(new FlatFileRecordReader("greetings.csv")) // requirement N°1
+    .registerRecordFilter(new StartsWithFlatFileRecordFilter("#")) // requirement N°2
+    .registerRecordMapper(new DsvRecordMapper(Greeting.class, new String[]{"sequence", "name"})) // requirement N°3
+    .registerRecordValidator(new BeanValidationRecordValidator&lt;Greeting&gt;()) // requirement N°4
+    .registerRecordProcessor(new GreetingProcessor()) // requirement N°5
+    .build();
+</pre>
+                <p>That's all, we can now run the batch and see the results!</p>
+
+                <h2 id="3">3. Running the batch</h2>
+
+                <p>To run Easy Batch, we use the following snippet :</p>
+<pre class="prettyprint">
+// Run easy batch engine
+EasyBatchReport easyBatchReport = easyBatchEngine.call();
+
+// Print the batch execution report
+System.out.println("easyBatchReport = " + easyBatchReport);
 </pre>
 
-                <h3 id="2.4">2.4 Running the batch</h3>
-                <p>Finally, we can initialize a batch engine instance and run the batch as follows:</p>
-<pre class="prettyprint">
-BatchEngine batchEngine = new DefaultBatchEngineImpl(batchConfiguration);
-BatchRunner batchRunner = new BatchRunner(batchEngine);
-batchRunner.run();
-</pre>
+                <p>At the end of the execution, we get an instance of the <code>EasyBatchReport</code> class containing
+                    information about batch start and end times, the total number of filtered, ignored, rejected and processed records.</p>
 
-                <p>The complete source code of this tutorial is available <a href="https://github.com/benas/cb4j/tree/master/cb4j-tutorials/src/main/java/io/github/benas/cb4j/tutorials/helloworld">here</a>.
-                To run the tutorial with maven, launch the following command in the <code>cb4j/cb4j-tutorials</code> directory :</p>
+                <p>The complete source code of this tutorial is available <a href="https://github.com/benas/easy-batch/tree/master/easybatch-tutorials/src/main/java/io/github/benas/easybatch/tutorials/helloworld" target="_blank">here</a>.
 
-                <p><code>mvn clean package exec:java -PrunHelloWorldTutorial</code></p>
+                To run the tutorial with maven, launch the following command in the <code>easybatch-tutorials</code> directory :</p>
+
+                <p><code>mvn exec:java -PrunHelloWorldTutorial</code></p>
                 
                 <p>If everything is ok, you should see the something like the following output in the console :</p>
 
 <pre>
-[CB4J : INFO] Configuration started at : Sat Dec 01 21:21:17 CET 2012
-[CB4J : INFO] Using 'UTF-8' encoding for input file reading
-[CB4J : INFO] Data input file : /data/cb4j/cb4j-tutorials/persons.csv
-[CB4J : INFO] Data qualifier property not specified, default to ''
-[CB4J : INFO] Record size property not specified, it will be calculated from the header record
-[CB4J : INFO] Record size : 2
-[CB4J : INFO] Fields delimiter : ','
-[CB4J : INFO] Data qualifier character : ''
-[CB4J : INFO] No log file specified for ignored records, using default : /data/cb4j/cb4j-tutorials/persons-ignored.log
-[CB4J : INFO] No log file specified for rejected records, using default : /data/cb4j/cb4j-tutorials/persons-rejected.log
-[CB4J : INFO] No log file specified for error records, using default : /data/cb4j/cb4j-tutorials/persons-errors.log
-[CB4J : INFO] CB4J JMX MBean registered successfully as: io.github.benas.cb4j.jmx:type=BatchMonitorMBean
-[CB4J : INFO] Configuration successful
-[CB4J : INFO] Initializing batch
-[CB4J : INFO] Total input records to process = 2
-[CB4J : INFO] CB4J engine is running...
-Hi Foo! Your sequence number is 1
-Hi Bar! Your sequence number is 2
-[CB4J : INFO] finalizing batch
-[CB4J : INFO] CB4J report :
-[CB4J : INFO] Start time = Sat Dec 01 21:21:17 CET 2012
-[CB4J : INFO] End time = Sat Dec 01 21:21:17 CET 2012
-[CB4J : INFO] Batch duration = 2ms
-[CB4J : INFO] Total input records = 2
-[CB4J : INFO] Total ignored records = 0
-[CB4J : INFO] Total rejected records = 0
-[CB4J : INFO] Total records processed successfully = 2
-[CB4J : INFO] Total records processed with error = 0
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time: 1.795s
-[INFO] Finished at: Mon Sep 03 22:29:07 CEST 2012
-[INFO] Final Memory: 8M/19M
-[INFO] ------------------------------------------------------------------------
+INFO: Initializing easy batch engine
+INFO: Easy batch JMX MBean registered successfully as: io.github.benas.easybatch.core.jmx:type=EasyBatchMonitorMBean
+INFO: Total records = 6
+INFO: easy batch engine is running...
+INFO: Record #1 [StringRecord{number=1, rawContent='#sequence,name'}] has been filtered
+Hi foo! Your sequence number is 1
+Hi bar! Your sequence number is 2
+SEVERE: Error while mapping record #3 [StringRecord{number=3, rawContent='x,foo'}] : Unable to convert 'x' to type long for field sequence
+SEVERE: Error while validating record #5 [StringRecord{number=5, rawContent='3,baz'}] : Invalid value '3' for property 'sequence' : must be less than or equal to 2 |
+SEVERE: Error while validating record #6 [StringRecord{number=6, rawContent='4,'}] : Invalid value '4' for property 'sequence' : must be less than or equal to 2 | Invalid value '' for property 'name' : may not be empty |
+INFO: Shutting down easy batch engine
+easyBatchReport = Easy Batch Report:
+    Start time = Sat Jan 11 22:15:21 CET 2014
+    End time = Sat Jan 11 22:15:21 CET 2014
+    Batch duration = 0s
+    Total records = 6
+    Filtered records = 1 (16%) [1]
+    Ignored records = 1 (16%) [3]
+    Rejected records = 2 (33%) [5, 6]
+    Error records = 0 (0%) []
+    Processed records = 2 (33%)
+    Average record processing time = 0.0s
 </pre>
-                <p>As expected, CB4J processed records in input CSV file and generated a greeting message for each person.</p>
+                <p>As expected, Easy Batch processed only valid records and generated a greeting message for each person.</p>
+                <p>Moreover, Easy Batch has logged precise information about which record has been filtered, ignored or rejected with an error message for each case.</p>
 
                 <p>
-                    <span class="label label-info">Conclusion</span> As we have seen, it is very easy to process CSV files using CB4J. All we have done is :
-                    <ul>
-                        <li>Providing the input file path</li>
-                        <li>Implementing the business logic of our batch</li>
-                    </ul>
-                    <p>CB4J has done all the plumbing for us such as reading and parsing records, mapping records to our domain POJO <code class="prettyprint">Greeting</code> and applying the business logic we provided for each record.</p>
+                    <span class="label label-info">Conclusion</span> As we have seen, it is very easy to do batch processing using Easy Batch. All we have done is :
+                <ul>
+                <li>Implementing the business logic of our batch</li>
+                <li>Providing configuration meta data</li>
+            </ul>
+                <p>The following table summarizes what we have done and what Easy Batch has done for us :</p>
 
-                </p>
+                <table class="table table-bordered table-condensed table-striped table-center">
+                    <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th class="center-th">You</th>
+                        <th class="center-th">Easy Batch</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Provide configuration meta data</td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Provide record processing logic</td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Handle I/O for input file</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Read input file record by record</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Filter comment records</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Map records to domain objects</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Validate each record</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Apply business processing logic</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Report batch statistics</td>
+                        <td></td>
+                        <td class="center-td"><i class="icon-ok-circle"></i></td>
+                    </tr>
+                    </tbody>
+                </table>
 
             </div>
 
@@ -276,7 +326,7 @@ Hi Bar! Your sequence number is 2
 
     <footer>
         <p class="pull-right"><a href="#"><i class="icon-circle-arrow-up"></i> Back to top</a></p>
-        <p>CB4J is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[CB4J]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/cb4j"><i class="icon-github"></i> Github</a></p>
+        <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Github</a></p>
     </footer>
 
 </div>

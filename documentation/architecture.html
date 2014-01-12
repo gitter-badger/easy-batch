@@ -3,7 +3,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta charset="utf-8">
-    <title>CB4J - Architecture</title>
+    <title>Easy Batch - Architecture</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="benas">
 
@@ -11,27 +11,15 @@
     <style type="text/css">
         body {
             padding-top: 60px;
-            padding-bottom: 40px;
-            background-image: url('../resources/img/background.png');
+            padding-bottom: 15px;
         }
         .sidebar-nav {
             padding: 9px 0;
-        }
-        .table td.center-td{
-            text-align: center;
-        }
-        .table th.center-th{
-            text-align: center;
-        }
-        .section {
-            padding-top: 40px;
         }
     </style>
     <link href="../resources/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="../resources/css/font-awesome.css" rel="stylesheet">
     <link href="../resources/css/sidebar.css" rel="stylesheet">
-
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
     <script type="text/javascript">
 
@@ -51,12 +39,12 @@
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="../index.html">CB4J</a>
+            <a class="brand" href="../index.html">Easy Batch</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 1.4.0</p>
+                <p class="navbar-text pull-right">Version: 2.0.0</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown active">
@@ -65,25 +53,22 @@
                             <li><a href="gettingStarted.html">Getting started</a></li>
                             <li><a href="architecture.html">Architecture</a></li>
                             <li><a href="userGuide.html">User Guide</a></li>
-                            <li><a href="faq.html">CB4J FAQ</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a id="tutorials" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-folder-open"></i> Tutorials<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="tutorials">
                             <li><a href="../tutorials/helloworld.html">Hello World!</a></li>
-                            <li><a href="../tutorials/customers.html">Customers ETL</a></li>
                             <li><a href="../tutorials/products.html">Product Statistics</a></li>
-                            <li><a href="../tutorials/library.html">Book Library</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a id="miscellaneous" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-asterisk"></i> Miscellaneous<b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="miscellaneous">
-                            <li><a href="../miscellaneous/spring.html">Using Spring with CB4J</a></li>
-                            <li><a href="../miscellaneous/quartz.html">Scheduling CB4J with Quartz</a></li>
-                            <li><a href="../miscellaneous/jmx.html">Monitoring CB4J with JMX</a></li>
-                            <li><a href="../miscellaneous/beanValidation.html">Using Bean Validation</a></li>
+                            <li><a href="../miscellaneous/spring.html">Using Easy Batch with Spring</a></li>
+                            <li><a href="../miscellaneous/quartz.html">Scheduling Easy Batch with Quartz</a></li>
+                            <li><a href="../miscellaneous/jmx.html">Monitoring Easy Batch with JMX</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -98,31 +83,21 @@
         <div class="span3">
             <div class="well sidebar-nav bs-docs-sidenav" data-spy="affix">
                 <ul class="nav nav-list">
-                    <li class="nav-header">About CB4J</li>
+                    <li class="nav-header"><i class="icon-home"></i> About Easy Batch</li>
                     <li><a href="../index.html">Overview</a></li>
                     <li><a href="../releaseNotes.html">Release notes</a></li>
-                    <li class="nav-header">Documentation</li>
+                    <li class="nav-header"><i class="icon-book"></i> Documentation</li>
                     <li><a href="gettingStarted.html">Getting started</a></li>
-                    <li class="active">
-                        <a href="architecture.html">Architecture</a>
-                        <ul>
-                            <li><a href="architecture.html#1">1. Data model</a></li>
-                            <li><a href="architecture.html#2">2. Main components</a></li>
-                            <li><a href="architecture.html#3">3. Processing workflow</a></li>
-                        </ul>
-                    </li>
+                    <li class="active"><a href="architecture.html">Architecture</a></li>
                     <li><a href="userGuide.html">User Guide</a></li>
-                    <li><a href="faq.html">CB4J FAQ</a></li>
-                    <li class="nav-header">Tutorials</li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li class="nav-header"><i class="icon-folder-open"></i> Tutorials</li>
                     <li><a href="../tutorials/helloworld.html">Hello World!</a></li>
-                    <li><a href="../tutorials/customers.html">Customers ETL</a></li>
                     <li><a href="../tutorials/products.html">Product Statistics</a></li>
-                    <li><a href="../tutorials/library.html">Book Library</a></li>
-                    <li class="nav-header">Miscellaneous</li>
-                    <li><a href="../miscellaneous/spring.html">Using Spring with CB4J</a></li>
-                    <li><a href="../miscellaneous/quartz.html">Scheduling CB4J with Quartz</a></li>
-                    <li><a href="../miscellaneous/jmx.html">Monitoring CB4J with JMX</a></li>
-                    <li><a href="../miscellaneous/beanValidation.html">Using Bean Validation</a></li>
+                    <li class="nav-header"><i class="icon-asterisk"></i> Miscellaneous</li>
+                    <li><a href="../miscellaneous/spring.html">Using Easy Batch with Spring</a></li>
+                    <li><a href="../miscellaneous/quartz.html">Scheduling Easy Batch with Quartz</a></li>
+                    <li><a href="../miscellaneous/jmx.html">Monitoring Easy Batch with JMX</a></li>
                 </ul>
             </div>
         </div>
@@ -135,136 +110,47 @@
 
             <div class="row-fluid">
 
-                <h2 id="1">1. Data model</h2>
+                <h2 id="1" >1. Main components</h2>
 
-                <p>CB4J uses a very simple and natural data model for dealing with CSV files. The main classes are :</p>
-
-                <ul>
-                    <li><code>Field</code> : represents a field in a record. A field has a content and an index</li>
-                    <li><code>Record</code> : represents a CSV record as an ordered list of fields</li>
-                </ul>
-
-                <p align="center"><img src="../resources/img/csv.png"/></p>
-                
-                <p>These classes are defined in <code>io.github.benas.cb4j.core.model</code> package.</p>
-
-                <h2 id="2" class="section">2. Main components</h2>
-
-                <p>The next figure illustrates the main CB4J components and gives an overview of the framework architecture:</p>
+                <p>The next figure describes the main Easy Batch components and gives an overview of the framework architecture:</p>
                 <p align="center"><img src="../resources/img/architecture.png"/></p>
 
-                <p>The main CB4J components are the following :</p>
+                <p>The main Easy Batch components are the following :</p>
                 <ul>
-                    <li>Record Parser : parses a record and splits it into a list of fields</li>
-                    <li>Record Validator : applies declared validation constraints for each record</li>
-                    <li>Record Mapper : maps a record to a Java object</li>
+                    <li>Record Reader : reads record sequentially from the data source</li>
+                    <li>Record Filter : filters records to be skipped from being processed</li>
+                    <li>Record Mapper : maps records to a Java objects</li>
+                    <li>Record Validator : applies declared validation constraints on records</li>
                     <li>Record Processor : applies business processing logic for each record</li>
                 </ul>
 
-                <p>Each of these components needs to be configured to work properly and as expected. CB4J uses a declarative approach to register configuration parameters. A typical use case of configuring CB4J is to :</p>
-                <ul>
-                    <li>Provide configuration parameters (Input file path, file encoding,field delimiter,etc)</li>
-                    <li>Register field validation constraints (field size, data type and format,etc) that will be used by the record validator to validate data</li>
-                    <li>Register record to object mapping logic that will be used by the record mapper or use the default one</li>
-                    <li>Register record processing business logic that will be applied by the record processor</li>
-                </ul>
+                <p>All of these components are actually optional and Easy Batch provides a No Operation implementation for each component.</p>
 
-                <p>All details about these steps can be found in the <a href="userGuide.html">user guide section</a>.</p>
+                <p>All details about these components can be found in the <a href="userGuide.html">user guide section</a>.</p>
 
-                <p>The following table summarizes what you need to do and what CB4J does for you :</p>
+                <h2 id="2">2. Processing workflow</h2>
 
-                <table class="table table-bordered table-striped table-center">
-                    <thead>
-                    <tr>
-                        <th>Task</th>
-                        <th class="center-th">You</th>
-                        <th class="center-th">CB4J</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Provide configuration parameters</td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Provide data validation constraints if any</td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Provide Record/Object mapping logic or use the default strategy</td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Provide record processing logic</td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Handle I/O for input/log files</td>
-                        <td></td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Read input file line by line</td>
-                        <td></td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Check record well-formedness</td>
-                        <td></td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Parse record and split it into a list of fields</td>
-                        <td></td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Apply validation logic to each field/record</td>
-                        <td></td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Apply Record/Object mapping logic</td>
-                        <td></td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Apply business processing logic</td>
-                        <td></td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Report batch statistics</td>
-                        <td></td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Generate log files for ignored/rejected/error records</td>
-                        <td></td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                    </tr>
-                    </tbody>
-                </table>
+                <p>The workflow used internally by Easy Batch is illustrated by the next figure and described below :</p>
 
-                <h2 id="3" class="section">3. Processing workflow</h2>
-
-                <p>The workflow used internally by CB4J is illustrated by the next figure and described below :</p>
-
-                <p align="center"><img src="../resources/img/workflow.png"/></p>
-
-                <ol>
-                    <li>The engine reads the input file line by line until the end of file. If the end of file is reached, the engine generates the batch report and terminates the execution</li>
-                    <li>The next record is read as a string containing raw data</li>
-                    <li>The record parser checks the record for well-formedness : If the record is not well formed, then it is ignored and the engine moves to the next one. If the record is well formed, then it is passed to the next step to be parsed</li>
-                    <li>The record parser parses the current record to split it into fields ordered by index and containing raw data</li>
-                    <li>The record validator applies validation constraints for each field. If a validation constraint is violated for one field, then the record is rejected. If all fields are valid, then the parsed record is passed to the next step to be mapped to a Java object</li>
-                    <li>At this point, the record mapper is supplied with a parsed record containing raw data that have passed the declared validation constraints. The parsed record is mapped to the declared Java object type. CB4J considers mapping exception as errors that should not pass the processing step. Hence, the engine rejects records that cannot be mapped to objects with typed fields. This is a design choice to minimize unexpected errors during record processing.</li>
-                    <li>Finally, the business logic is executed by the record processor. At this point, the record processor is supplied with a Java object populated with validated and typed data. If an exception occurs during record processing, a rollback is performed (if a rollback handler callback is registered) and the error is reported. Otherwise, the engine moves to the next record.</li>
-                </ol>
+                <div class="row">
+                    <div class="span4">
+                        <br/> <br/> <br/>
+                        <ol>
+                            <li>The engine reads records one by one from the data source. <br/><br/></li>
+                            <li>If the record should be filtered, then the engine skips it and moves to the next one. <br/><br/></li>
+                            <li>The record mapper then tries to map the record to the domain object type.
+                                If the record is not well formed or cannot be mapped to the domain object (due to type conversion exceptions),
+                                the engine ignores the record and moves to the next one. <br/><br/></li>
+                            <li>The record validator applies declared validation constraints on the record.
+                                If a validation constraint is violated, then the record is rejected. <br/><br/></li>
+                            <li>Finally, the business logic is executed by the record processor on the domain object correctly populated with valid data.
+                                If an exception occurs during record processing, the engine logs the exception and moves to the next record.</li>
+                        </ol>
+                    </div>
+                    <div class="span5 offset1">
+                        <img src="../resources/img/workflow.png"/>
+                    </div>
+                </div>
 
             </div>
 
@@ -276,7 +162,7 @@
 
     <footer>
         <p class="pull-right"><a href="#"><i class="icon-circle-arrow-up"></i> Back to top</a></p>
-        <p>CB4J is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[CB4J]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/cb4j"><i class="icon-github"></i> Github</a></p>
+        <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Github</a></p>
     </footer>
 
 </div>
