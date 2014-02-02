@@ -3,7 +3,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta charset="utf-8">
-    <title>Easy Batch - Architecture</title>
+    <title>Java Easy Batch - Architecture</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mahmoud Ben Hassine">
     <link rel="shortcut icon" href="../resources/img/gear.ico"/>
@@ -45,7 +45,7 @@
         <div class="container">
             <a class="brand" href="../index.html"><i class="icon-cogs"></i> Easy Batch</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 2.1.0</p>
+                <p class="navbar-text pull-right">Version: 2.1.1</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown">
@@ -53,6 +53,7 @@
                         <ul class="dropdown-menu" role="menu" aria-labelledby="documentation">
                             <li><a href="../documentation/gettingStarted.html"><i class="icon-play"></i> Getting started</a></li>
                             <li><a href="../documentation/architecture.html"><i class="icon-beaker"></i> Architecture</a></li>
+                            <li><a href="../documentation/benchmark.html"><i class="icon-dashboard"></i> Performance benchmark</a></li>
                             <li><a href="../documentation/userGuide.html"><i class="icon-book"></i> User Guide</a></li>
                             <li><a href="../tutorials/index.html"><i class="icon-code"></i> Tutorials</a></li>
                             <li><a href="../documentation/faq.html"><i class="icon-question"></i> FAQ</a></li>
@@ -83,6 +84,7 @@
                     <li class="nav-header">Documentation</li>
                     <li><a href="../documentation/gettingStarted.html"><i class="icon-play"></i> Getting started</a></li>
                     <li class="active"><a href="../documentation/architecture.html"><i class="icon-beaker"></i> Architecture</a></li>
+                    <li><a href="../documentation/benchmark.html"><i class="icon-dashboard"></i> Performance benchmark</a></li>
                     <li><a href="../documentation/userGuide.html"><i class="icon-book"></i> User Guide</a></li>
                     <li><a href="../tutorials/index.html"><i class="icon-code"></i> Tutorials</a></li>
                     <li><a href="../documentation/faq.html"><i class="icon-question"></i> FAQ</a></li>
@@ -103,10 +105,12 @@
 
                 <h2 id="1" >1. Main components</h2>
 
-                <p>The next figure describes the main Easy Batch components and gives an overview of the framework architecture:</p>
-                <p align="center"><img src="../resources/img/architecture.png"/></p>
+                <p>The next figure describes Easy Batch main components and gives an overview of the framework architecture:</p>
+                <div>
+                    <img src="../resources/img/architecture.png"/>
+                </div>
 
-                <p>The main Easy Batch components are the following :</p>
+                <p>The main components are:</p>
                 <ul>
                     <li>Record Reader : reads record sequentially from the data source</li>
                     <li>Record Filter : filters records to be skipped from being processed</li>
@@ -115,7 +119,7 @@
                     <li>Record Processor : applies business processing logic for each record</li>
                 </ul>
 
-                <p>All of these components are actually optional and Easy Batch provides a No Operation implementation for each component.</p>
+                <p>All of these components are optional. Easy Batch provides a No Operation implementation for each component.</p>
 
                 <p>All details about these components can be found in the <a href="userGuide.html">user guide section</a>.</p>
 
@@ -123,22 +127,22 @@
 
                 <p>The workflow used internally by Easy Batch is illustrated by the next figure and described below :</p>
 
-                <div class="row">
-                    <div class="span4">
-                        <br/> <br/> <br/>
+                <div>
+                    <div class="span6">
+                        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                         <ol>
-                            <li>The engine reads records one by one from the data source. <br/><br/></li>
-                            <li>If the record should be filtered, then the engine skips it and moves to the next one. <br/><br/></li>
+                            <li>The engine reads records one by one from the data source. <br/><br/><br/><br/></li>
+                            <li>If the record should be filtered, then the engine skips it and moves to the next one. <br/><br/><br/><br/><br/></li>
                             <li>The record mapper then tries to map the record to the domain object type.
                                 If the record is not well formed or cannot be mapped to the domain object (due to type conversion exceptions),
-                                the engine ignores the record and moves to the next one. <br/><br/></li>
+                                the engine ignores the record and moves to the next one. <br/><br/><br/><br/><br/></li>
                             <li>The record validator applies declared validation constraints on the record.
-                                If a validation constraint is violated, then the record is rejected. <br/><br/></li>
+                                If a validation constraint is violated, then the record is rejected. <br/><br/><br/><br/><br/><br/><br/></li>
                             <li>Finally, the business logic is executed by the record processor on the domain object correctly populated with valid data.
                                 If an exception occurs during record processing, the engine logs the exception and moves to the next record.</li>
                         </ol>
                     </div>
-                    <div class="span5">
+                    <div class="span6">
                         <img src="../resources/img/workflow.png"/>
                     </div>
                 </div>

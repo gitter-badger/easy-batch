@@ -3,7 +3,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta charset="utf-8">
-    <title>Easy Batch - Tutorials</title>
+    <title>Java Easy Batch - Tutorials</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mahmoud Ben Hassine">
     <link rel="shortcut icon" href="../resources/img/gear.ico"/>
@@ -54,7 +54,7 @@
         <div class="container">
             <a class="brand" href="../index.html"><i class="icon-cogs"></i> Easy Batch</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 2.1.0</p>
+                <p class="navbar-text pull-right">Version: 2.1.1</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown">
@@ -62,6 +62,7 @@
                         <ul class="dropdown-menu" role="menu" aria-labelledby="documentation">
                             <li><a href="../documentation/gettingStarted.html"><i class="icon-play"></i> Getting started</a></li>
                             <li><a href="../documentation/architecture.html"><i class="icon-beaker"></i> Architecture</a></li>
+                            <li><a href="../documentation/benchmark.html"><i class="icon-dashboard"></i> Performance benchmark</a></li>
                             <li><a href="../documentation/userGuide.html"><i class="icon-book"></i> User Guide</a></li>
                             <li><a href="index.html"><i class="icon-code"></i> Tutorials</a></li>
                             <li><a href="../documentation/faq.html"><i class="icon-question"></i> FAQ</a></li>
@@ -92,6 +93,7 @@
                     <li class="nav-header">Documentation</li>
                     <li><a href="../documentation/gettingStarted.html"><i class="icon-play"></i> Getting started</a></li>
                     <li><a href="../documentation/architecture.html"><i class="icon-beaker"></i> Architecture</a></li>
+                    <li><a href="../documentation/benchmark.html"><i class="icon-dashboard"></i> Performance benchmark</a></li>
                     <li><a href="../documentation/userGuide.html"><i class="icon-book"></i> User Guide</a></li>
                     <li class="active"><a href="index.html"><i class="icon-code"></i> Tutorials</a></li>
                     <li><a href="../documentation/faq.html"><i class="icon-question"></i> FAQ</a></li>
@@ -121,15 +123,14 @@
 
                 <p>To keep the tutorial simple, we will use an in-memory database and the following input file named <code>products-jsr303.csv</code>:</p>
 <pre>
-#"productId"|"name"|"description"|"price"|"published"|"lastUpdate"
+"productId"|"name"|"description"|"price"|"published"|"lastUpdate"
 "0001"|"product1"|"description1"|"2500"|"true"|"2014-01-01"
 "0002"|<span class="text-error"><strong>""</strong></span>|"description2"|"2400"|"false"|"2014-01-02"
 "0003"|"product3"|"description3"|<span class="text-error"><strong>"-2300"</strong></span>|"true"|"2014-01-03"
 "0004"|"product4"|"description4"|"2200"|"false"|<span class="text-error"><strong>"2024-01-04"</strong></span>
 </pre>
 
-                <p>The record format is self explanatory. The first record is a header record that should be skipped.
-                    The delimiter is the pipe character ("|") and data is qualified by double quotes ("").</p>
+                <p>The record format is self explanatory. The delimiter is the pipe character ("|") and data is qualified by double quotes ("").</p>
 
                 <p>Easy Batch development is POJO-based, we would like to map each CSV record to the following <code>Product</code> bean:</p>
 <pre class="prettyprint">
@@ -155,7 +156,7 @@ public class Product {
 
 }
 </pre>
-                <p>We have annotated the <code>Product</code> field with Bean Validation API annotations to ensure that:</p>
+                <p>We have annotated the <code>Product</code> fields with Bean Validation API annotations to ensure that:</p>
                 <ul>
                     <li>The product Id is not null</li>
                     <li>The product name is not empty</li>
@@ -210,7 +211,6 @@ public class ProductProcessor extends AbstractRecordProcessor&lt;Product&gt; {
 
                 <ol>
                     <li>Read records from the <code>products-jsr303.csv</code> flat file</li>
-                    <li>Filter the header record</li>
                     <li>Map each record to an instance of the <code>Product</code> bean</li>
                     <li>Validate each product with the Bean Validation API</li>
                     <li>Process each record using our <code>ProductProcessor</code></li>
@@ -220,16 +220,13 @@ public class ProductProcessor extends AbstractRecordProcessor&lt;Product&gt; {
 
 <pre class="prettyprint">
 // Configure the product record mapper
-DsvRecordMapper&lt;Product&gt; productMapper = new DsvRecordMapper&lt;Product&gt;(
-    Product.class, // POJO type
-    new String[]{"productId","name", "description", "price","published", "lastUpdate" }); //Ordered fields names
+DelimitedRecordMapper&lt;Product&gt; productMapper = new DelimitedRecordMapper(Product.class);
     productMapper.setDelimiter("|"); // set field delimiter
     productMapper.setQualifier("\"");// set data qualifier
 
 // Build an easy batch engine
 EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
     .registerRecordReader(new FlatFileRecordReader("products-jsr303.csv")) // requirement N°1
-    .registerRecordFilter(new StartsWithStringRecordFilter("#")) // requirement N°2
     .registerRecordMapper(productMapper) // requirement N°3
     <strong>.registerRecordValidator(new BeanValidationRecordValidator&lt;Product&gt;())</strong> // requirement N°4
     .registerRecordProcessor(new ProductProcessor()) // requirement N°5
@@ -254,7 +251,7 @@ INFO: Initializing easy batch engine
 INFO: Data source: /data/in/products-jsr303.csv
 INFO: Total records = 5
 INFO: easy batch engine is running...
-INFO: Record #1 [StringRecord{number=1, rawContent='#"productId"|"name"|"description"|"price"|"published"|"lastUpdate"'}] has been filtered
+<span class="text-error"><strong>SEVERE: Error while mapping record #1: Unable to convert 'productId' to type long for field productId</strong></span>
 INFO: Product [productId:1|name:product1] successfully persisted in the database
 SEVERE: Error while validating record #3
     [StringRecord{number=3, rawContent='"0002"|""|"description2"|"2400"|"false"|"2014-01-02"'}] :
@@ -266,17 +263,17 @@ SEVERE: Error while validating record #5
     [StringRecord{number=5, rawContent='"0004"|"product4"|"description4"|"2200"|"false"|"2024-01-04"'}] :
     <span class="text-error"><strong>Invalid value 'Thu Jan 04 00:00:00 CET 2024' for property 'lastUpdate' : must be in the past |</strong></span>
 INFO: Shutting down easy batch engine
-easyBatchReport = Easy Batch Report:
+Easy Batch Report:
 	Start time = 2014-01-19 09:41:54
 	End time = 2014-01-19 09:41:55
 	Batch duration = 0s
 	Data source = /data/in/products-jsr303.csv
 	Total records = 5
-	Filtered records = 1 (20%) [1]
-	Ignored records = 0 (0%) []
+	Filtered records = 0 (0%) []
+	Ignored records = 1 (20%) [1]
 	<span class="text-error"><strong>Rejected records = 3 (60%) [3, 4, 5]</strong></span>
 	Error records = 0 (0%) []
-	<span class="text-success"><strong>Processed records = 1 (20%)</strong></span>
+	<span class="text-success"><strong>Success records = 1 (20%)</strong></span>
 	Average record processing time = 0.0s
 Loading products from the database...
 Product :
@@ -295,7 +292,7 @@ Product :
                     <li>and registered the built-in <code>BeanValidationRecordValidator</code> within Easy Batch engine</li>
                 </ul>
 
-                <p>Easy Batch handled all the plumbing code of reading, filtering, parsing, mapping and validating products data
+                <p>Easy Batch handled all the plumbing code of reading, parsing, mapping and validating products data
                     and actually has reduced this plumbing code from hundred lines to only a very few lines! (listing above).</p>
 
                 <p>The following table summarizes what we have done and what Easy Batch has done for us :</p>
@@ -326,11 +323,6 @@ Product :
                     </tr>
                     <tr>
                         <td>Read input file record by record</td>
-                        <td></td>
-                        <td class="center-td"><i class="icon-ok-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Filter comment records</td>
                         <td></td>
                         <td class="center-td"><i class="icon-ok-circle"></i></td>
                     </tr>

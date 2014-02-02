@@ -3,7 +3,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta charset="utf-8">
-    <title>Easy Batch - User guide</title>
+    <title>Java Easy Batch - User guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mahmoud Ben Hassine">
     <link rel="shortcut icon" href="../resources/img/gear.ico"/>
@@ -17,9 +17,6 @@
         }
         .sidebar-nav {
             padding: 9px 0;
-        }
-        .section {
-            padding-top: 40px;
         }
     </style>
     <link href="../resources/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -51,7 +48,7 @@
         <div class="container">
             <a class="brand" href="../index.html"><i class="icon-cogs"></i> Easy Batch</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 2.1.0</p>
+                <p class="navbar-text pull-right">Version: 2.1.1</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown">
@@ -59,6 +56,7 @@
                         <ul class="dropdown-menu" role="menu" aria-labelledby="documentation">
                             <li><a href="../documentation/gettingStarted.html"><i class="icon-play"></i> Getting started</a></li>
                             <li><a href="../documentation/architecture.html"><i class="icon-beaker"></i> Architecture</a></li>
+                            <li><a href="../documentation/benchmark.html"><i class="icon-dashboard"></i> Performance benchmark</a></li>
                             <li><a href="../documentation/userGuide.html"><i class="icon-book"></i> User Guide</a></li>
                             <li><a href="index.html"><i class="icon-code"></i> Tutorials</a></li>
                             <li><a href="../documentation/faq.html"><i class="icon-question"></i> FAQ</a></li>
@@ -89,6 +87,7 @@
                 <li class="nav-header">Documentation</li>
                 <li><a href="../documentation/gettingStarted.html"><i class="icon-play"></i> Getting started</a></li>
                 <li><a href="../documentation/architecture.html"><i class="icon-beaker"></i> Architecture</a></li>
+                <li><a href="../documentation/benchmark.html"><i class="icon-dashboard"></i> Performance benchmark</a></li>
                 <li class="active"><a href="../documentation/userGuide.html"><i class="icon-book"></i> User Guide</a></li>
                 <li><a href="../tutorials/index.html"><i class="icon-code"></i> Tutorials</a></li>
                 <li><a href="../documentation/faq.html"><i class="icon-question"></i> FAQ</a></li>
@@ -148,7 +147,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-flatfile&lt;/artifactId&gt;
-    &lt;version&gt;${version}&lt;/version&gt;
+    &lt;version&gt;2.1.1&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 
@@ -162,8 +161,8 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
                 <h3>2.2 Reading data from an xml file</h3>
 
                 <p>Easy Batch comes with a built-in <code>XmlRecordReader</code> that allows you to read records from an xml file using the
-                    <a href="https://www.jcp.org/en/jsr/detail?id=173">Stax</a> API.</p>
-                <p>Since Easy Batch development is Pojo-Based, Xml records correspond to instances of your domain objects. Let's see an example, consider the following xml file:</p>
+                    <a href="https://www.jcp.org/en/jsr/detail?id=173" target="_blank">Stax</a> API.</p>
+                <p>Since Easy Batch development is Pojo-Based, Xml records correspond to instances of your domain objects. Let's consider the following xml file:</p>
 
 <pre class="prettyprint">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -199,7 +198,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-xml&lt;/artifactId&gt;
-    &lt;version&gt;${version}&lt;/version&gt;
+    &lt;version&gt;2.1.1&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 
@@ -222,7 +221,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
     .registerRecordReader(new StringRecordReader(myString))
     .build();
 </pre>
-                <p> When you create a <code>StringRecordReader</code>, you should specify the String reference to read data from.</p>
+                <p> When you create a <code>StringRecordReader</code>, you should specify the String reference representing the data source.</p>
 
                 <h3>2.4 Reading data from a database</h3>
 
@@ -233,7 +232,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-jdbc&lt;/artifactId&gt;
-    &lt;version&gt;${version}&lt;/version&gt;
+    &lt;version&gt;2.1.1&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 
@@ -243,11 +242,11 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
     .registerRecordReader(new JdbcRecordReader(myDatabaseConnection, myQuery))
     .build();
 </pre>
-                <p> When you create a <code>JdbcRecordReader</code>, you should specify the jdbc database connection and the sql query to use to fetch data.</p>
+                <p> When you create a <code>JdbcRecordReader</code>, you should specify the jdbc database connection and the sql query to use to fetch the data.</p>
 
                 <div class="alert">
-                    <strong>Head up!</strong> The JDBC API does not allow to stream data from a database, so the <code>JdbcRecordReader</code> loads all data fetched by the sql query you provide into a <code>java.sql.ResultSet</code> object.
-                    You should pay attention to large data sets when you specify the sql query to the <code>JdbcRecordReader</code>.
+                    <strong>Heads up!</strong> The <code>JdbcRecordReader</code> loads all data fetched by the sql query you provide into a <code>java.sql.ResultSet</code> object.
+                    You should pay attention to large data sets with the sql query you specify to the <code>JdbcRecordReader</code>.
                 </div>
 
                 <h2 id="3">3. Filtering records</h2>
@@ -289,14 +288,14 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 
             <p>Easy Batch comes with two implementations of the <code>RecordMapper</code> interface to map flat file records to your domain objects :</p>
             <ul>
-                <li><code>DsvRecordMapper</code> : allows you to map delimiter-separated-values to domain objects</li>
+                <li><code>DelimitedRecordMapper</code> : allows you to map delimiter-separated-values to domain objects</li>
                 <li><code>FixedLengthRecordMapper</code> : allows you to map fixed-length records to domain objects</li>
             </ul>
 
             <p>These two mappers also convert raw textual data in flat file records to typed data in your domain objects.
                 Easy Batch supports all built-in Java primitive and wrapper types (please refer to the javadoc of the <code>io.github.benas.easybatch.core.converter</code> package for all details about Easy Batch built-in type converters).
                 If you want to provide a custom type converter, you can implement the <code>TypeConverter</code> interface and register your implementation using
-                <code>DsvRecordMapper.registerTypeConverter</code> and <code>FixedLengthRecordMapper.registerTypeConverter</code> methods.</p>
+                <code>DelimitedRecordMapper.registerTypeConverter</code> and <code>FixedLengthRecordMapper.registerTypeConverter</code> methods.</p>
 
                 <p>To use these two mappers, you need to add the <code>easybatch-flatfile</code> module to your dependencies.</p>
 
@@ -306,15 +305,26 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 
                 <h4>4.1.1 Mapping delimiter-separated values</h4>
 
-                <p>To register the <code>DsvRecordMapper</code>, use the following snippet:</p>
+                <p>To register the <code>DelimitedRecordMapper</code>, use the following snippet:</p>
+<pre class="prettyprint">
+EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
+    .registerRecordMapper(new DelimitedRecordMapper(MyPojoType.class))
+    .build();
+</pre>
+
+                <p>By default, the <code>DelimiterRecordMapper</code> will use the header record to map delimited fields to domain object fields with the same name.
+                    If you use this convention of configuration, you should not skip the header record.</p>
+                    <p>If you want to use a custom name mapping strategy, you can specify field names as follows:</p>
 
 <pre class="prettyprint">
 EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
-    .registerRecordMapper(new DsvRecordMapper(MyPojoType.class, new String[]{"myPojoField1", "myPojoField2"}))
+    .registerRecordMapper(new DelimitedRecordMapper(MyPojoType.class, new String[]{"myPojoField1", "myPojoField2"}))
     .build();
 </pre>
-                <p>When you create a <code>DsvRecordMapper</code>, you should specify your domain object type and an array of field names in the same order as they appear in the delimited record.</p>
-                <p>You can also configure the <code>DsvRecordMapper</code> with custom parameters defined in the table below:</p>
+
+                <p>Field names should be in the same order as they appear in the delimited record.</p>
+
+                <p>You can also configure the <code>DelimitedRecordMapper</code> with custom parameters defined in the table below:</p>
                 <table class="table table-bordered table-condensed table-striped table-center">
                     <thead>
                     <tr>
@@ -342,8 +352,14 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
                     </tbody>
                 </table>
 
-                <p>You can find examples of how to use the <code>DsvRecordMapper</code> in the <a href="../tutorials/helloworldCSV.html">Hello World CSV tutorial</a> and the
-                    <a href="../tutorials/products.html">Products statistics tutorial</a>.</p>
+                <p>If a delimited record is not well formed, the <code>DelimitedRecordMapper</code> throws an exception that causes the record to be ignored by the engine in the following cases:</p>
+                <ul>
+                    <li>Fields number is not equal to the expected fields number (missing field, extra field, etc)</li>
+                    <li>A field is not enclosed as expected with the data qualifier</li>
+                </ul>
+
+                <p>You can find examples of how to use the <code>DelimitedRecordMapper</code> in the <a href="../tutorials/helloworldCSV.html" target="_blank">Hello World CSV tutorial</a>
+                    and in the <a href="../tutorials/products.html" target="_blank">Products statistics tutorial</a>.</p>
 
                 <h4>4.1.2 Mapping fixed-length records</h4>
 
@@ -359,7 +375,10 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 </pre>
                 <p>When you create a <code>FixedLengthRecordMapper</code>, you should specify your domain object type, an array of field lengths and an array of field names in the same order as they appear in the fixed length record.</p>
 
-                <p>You can find an example of how to use the <code>FixedLengthRecordMapper</code> in the <a href="../tutorials/helloworldFLR.html">Hello World FLR tutorial.</a>
+                <p>If a fixed length record is not well formed, the <code>FixedLengthRecordMapper</code> throws an exception that causes the record to be ignored by the engine.
+                    A fixed length record is not well formed if its length is not equal to expected record length.</p>
+
+                <p>You can find an example of how to use the <code>FixedLengthRecordMapper</code> in the <a href="../tutorials/helloworldFLR.html" target="_blank">Hello World FLR tutorial.</a>
 
                 <h3>4.2 Mapping xml records</h3>
 
@@ -376,7 +395,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 </pre>
                 <p>When you create an <code>XmlRecordMapper</code>, you should specify your domain object type and an xsd file against which the xml record should be validated (if no xsd is specified, no validation will be applied).</p>
 
-                <p>You can find an example of how to use the <code>XmlRecordMapper</code> in the <a href="../tutorials/helloworldXML.html">Hello World XML tutorial</a>.</p>
+                <p>You can find an example of how to use the <code>XmlRecordMapper</code> in the <a href="../tutorials/helloworldXML.html" target="_blank">Hello World XML tutorial</a>.</p>
 
                 <div class="alert alert-warning">
                     <p>The <code>XmlRecordMapper</code> should be used in conjunction with the <code>XmlRecordReader</code>.</p>
@@ -390,12 +409,21 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 
 <pre class="prettyprint">
 EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
+    .registerRecordMapper(new JdbcRecordMapper(MyPojoType.class))
+    .build();
+</pre>
+                <p>When you create a <code>JdbcRecordMapper</code>, you should specify your domain object type. Easy Batch will introspect your bean and the jdbc record result set and then map columns to fields with the same name.</p>
+
+                <p>If column names are different from your Pojo field names, you can specify an array of field names in the same order as in the database record as follows:</p>
+
+<pre class="prettyprint">
+EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
     .registerRecordMapper(new JdbcRecordMapper(MyPojoType.class, new String[]{"myPojoField1", "myPojoField2"}))
     .build();
 </pre>
-                <p>When you create a <code>JdbcRecordMapper</code>, you should specify your domain object type and an array of field names in the same order as in the database record.</p>
+                <p>Easy Batch will then use this array of field names to map data from columns in the same order as in the jdbc record.</p>
 
-                <p>You can find an example of how to use the <code>JdbcRecordMapper</code> in the <a href="../tutorials/helloworldJDBC.html">Hello World JDBC tutorial</a>.</p>
+                <p>You can find an example of how to use the <code>JdbcRecordMapper</code> in the <a href="../tutorials/helloworldJDBC.html" target="_blank">Hello World JDBC tutorial</a>.</p>
 
                 <div class="alert alert-warning">
                     <p>The <code>JdbcRecordMapper</code> should be used in conjunction with the <code>JdbcRecordReader</code>.</p>
@@ -419,7 +447,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-validation&lt;/artifactId&gt;
-    &lt;version&gt;${version}&lt;/version&gt;
+    &lt;version&gt;2.1.1&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
                 </li>
@@ -444,8 +472,8 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
     .build();
 </pre>
             <p>With Easy Batch, you can also do some computation on input records and hold a batch result that will be returned at the end of execution.</p>
-            <p>This can be done through the <code>getEasyBatchResult</code> method of the <code>RecordProcessor</code> interface : Your record processor can hold the compuation result in an instance variable and return it using this method.</p>
-            <p>You can find an example of how to return a computation result in the <a href="../tutorials/products.html">Products statistics tutorial</a>.</p>
+            <p>This can be done through the <code>getEasyBatchResult</code> method of the <code>RecordProcessor</code> interface : Your record processor can hold the computation result in an instance variable and return it using this method.</p>
+            <p>You can find an example of how to return a computation result in the <a href="../tutorials/products.html" target="_blank">Products statistics tutorial</a>.</p>
 
                 <p><span class="label label-info">Heads up!</span> By default, Easy Batch registers a NoOp record processor that logs an information message about the record being processed.</p>
 
@@ -463,7 +491,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
                 <li>The number of records processed with errors</li>
                 <li>The number of records successfully processed</li>
                 <li>The processing time for each record</li>
-                <li>The record processing time average</li>
+                <li>The record average processing time</li>
                 <li>And the computation result if any</li>
             </ul>
 
@@ -479,18 +507,17 @@ String htmlReport = new EasyBatchReportFormatter().formatEasyBatchReport(easyBat
 </pre>
                 <p>The following is a sample HTML report (click on the image for a live HTML demo):</p>
 
-                <div class="offset1" style="width:80%;height:80%;">
                     <a href="htmlReport.html" target="_blank">
-                        <img src="../resources/img/htmlReport.png" alt="htmlReport"/>
+                        <img src="../resources/img/htmlReport.png" alt="htmlReport" />
                     </a>
-                </div>
+                <br/>
                 <br/>
                 <p>To use the <code>EasyBatchHtmlReportFormatter</code>, you should add the <code>easybatch-tools</code> module to your dependencies:</p>
 <pre class="prettyprint">
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-tools&lt;/artifactId&gt;
-    &lt;version&gt;${version}&lt;/version&gt;
+    &lt;version&gt;2.1.1&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 
