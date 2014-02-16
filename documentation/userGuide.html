@@ -6,6 +6,7 @@
     <title>Java Easy Batch - User guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mahmoud Ben Hassine">
+	<meta name="description" content="Batch processing with Java made easy!">
     <link rel="shortcut icon" href="../resources/img/gear.ico"/>
 
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +49,7 @@
         <div class="container">
             <a class="brand" href="../index.html"><i class="icon-cogs"></i> Easy Batch</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 2.1.1</p>
+                <p class="navbar-text pull-right">Version: 2.1.2</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown">
@@ -147,7 +148,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-flatfile&lt;/artifactId&gt;
-    &lt;version&gt;2.1.1&lt;/version&gt;
+    &lt;version&gt;2.1.2&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 
@@ -198,7 +199,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-xml&lt;/artifactId&gt;
-    &lt;version&gt;2.1.1&lt;/version&gt;
+    &lt;version&gt;2.1.2&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 
@@ -232,7 +233,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-jdbc&lt;/artifactId&gt;
-    &lt;version&gt;2.1.1&lt;/version&gt;
+    &lt;version&gt;2.1.2&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 
@@ -313,18 +314,56 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 </pre>
 
                 <p>By default, the <code>DelimiterRecordMapper</code> will use the header record to map delimited fields to domain object fields with the same name.
-                    If you use this convention of configuration, you should not skip the header record.</p>
-                    <p>If you want to use a custom name mapping strategy, you can specify field names as follows:</p>
+                    If you use this convention of configuration, you should not skip the header record with a record filter.</p>
+                    <p>If you want to use a custom mapping strategy, you can specify field names as follows:</p>
 
 <pre class="prettyprint">
-EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
-    .registerRecordMapper(new DelimitedRecordMapper(MyPojoType.class, new String[]{"myPojoField1", "myPojoField2"}))
-    .build();
+RecordMapper&lt;MyPojo&gt; myPojoMapper =
+    new DelimitedRecordMapper(MyPojo.class, new String[]{"myPojoField1", "myPojoField2"});
 </pre>
 
                 <p>Field names should be in the same order as they appear in the delimited record.</p>
 
-                <p>You can also configure the <code>DelimitedRecordMapper</code> with custom parameters defined in the table below:</p>
+                <p>You can also map only some fields to your domain object. For example: </p>
+<pre class="prettyprint">
+RecordMapper&lt;MyPojo&gt; myPojoMapper =
+    new DelimitedRecordMapper(MyPojo.class, new Integer[]{1, 4, 7});
+</pre>
+                <p>With this constructor, the <code>DelimitedRecordMapper</code> will only map fields 1, 4 and 7 to your domain objects fields.
+                    Field names will be retrieved from the header record. If you want to use a custom mapping strategy, you can specify field names
+                    in the third constructor parameter. For example:</p>
+
+<pre class="prettyprint">
+RecordMapper&lt;MyPojo&gt; myPojoMapper =
+    new DelimitedRecordMapper(MyPojoType.class,
+                  new Integer[]{1, 4, 7},
+                  new String[]{"id", "name", "description"});
+</pre>
+                <p>This will map delimited fields to your POJO fields as described in the table below:</p>
+                <table class="table table-bordered table-condensed table-striped table-center">
+                    <thead>
+                    <tr>
+                        <th>Delimited field index</th>
+                        <th>POJO field</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="center-td">id</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="center-td">name</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td class="center-td">description</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p>You can also configure the <code>DelimitedRecordMapper</code> with custom parameters:</p>
                 <table class="table table-bordered table-condensed table-striped table-center">
                     <thead>
                     <tr>
@@ -352,9 +391,16 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
                     </tbody>
                 </table>
 
+                <p>For example, to use the <em>pipe</em> character as a delimiter, use the following snippet:</p>
+<pre class="prettyprint">
+DelimitedRecordMapper&lt;MyPojo&gt; myPojoMapper = new DelimitedRecordMapper&lt;MyPojo&gt;(MyPojo.class);
+myPojoMapper.setDelimiter("|");
+</pre>
+                <p>You can use other setters to provide custom parameters.</p>
                 <p>If a delimited record is not well formed, the <code>DelimitedRecordMapper</code> throws an exception that causes the record to be ignored by the engine in the following cases:</p>
                 <ul>
-                    <li>Fields number is not equal to the expected fields number (missing field, extra field, etc)</li>
+                    <li>Fields number is not equal to the expected fields number (missing field, extra field, etc) as specified in the
+                        <a href="http://www.ietf.org/rfc/rfc4180.txt" target="_blank">CSV RFC (section 2.4).</a></li>
                     <li>A field is not enclosed as expected with the data qualifier</li>
                 </ul>
 
@@ -447,7 +493,7 @@ EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-validation&lt;/artifactId&gt;
-    &lt;version&gt;2.1.1&lt;/version&gt;
+    &lt;version&gt;2.1.2&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
                 </li>
@@ -517,7 +563,7 @@ String htmlReport = new EasyBatchReportFormatter().formatEasyBatchReport(easyBat
 &lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-tools&lt;/artifactId&gt;
-    &lt;version&gt;2.1.1&lt;/version&gt;
+    &lt;version&gt;2.1.2&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 
@@ -531,7 +577,7 @@ String htmlReport = new EasyBatchReportFormatter().formatEasyBatchReport(easyBat
 
     <footer>
         <p class="pull-right"><a href="#"><i class="icon-circle-arrow-up"></i> Back to top</a></p>
-        <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Github</a></p>
+    <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> on <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> GitHub</a></p>
     </footer>
 
 </div>

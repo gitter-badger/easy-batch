@@ -6,6 +6,7 @@
     <title>Java Easy Batch - Tutorials</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mahmoud Ben Hassine">
+	<meta name="description" content="Batch processing with Java made easy!">
     <link rel="shortcut icon" href="../resources/img/gear.ico"/>
 
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +55,7 @@
         <div class="container">
             <a class="brand" href="../index.html"><i class="icon-cogs"></i> Easy Batch</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 2.1.1</p>
+                <p class="navbar-text pull-right">Version: 2.1.2</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown">
@@ -170,25 +171,31 @@ public class GreetingProcessor extends AbstractRecordProcessor&lt;Greeting&gt; {
 
         <p>The following listing provides this configuration:</p>
 <pre class="prettyprint">
-// Build an easy batch engine
-EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
-    .registerRecordReader(new JdbcRecordReader( // requirement N°1
-        connection, // database JDBC connection
-        "select * from greeting")) // Query string to fetch data
-    .registerRecordMapper(new JdbcRecordMapper(Greeting.class)) // requirement N°2
-    .registerRecordProcessor(new GreetingProcessor()) // requirement N°3
-    .build();
+public class Launcher {
+
+    public static void main(String[] args) throws Exception {
+
+        // Build an easy batch engine
+        EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
+            .registerRecordReader(new JdbcRecordReader( // requirement N°1
+                connection, // database JDBC connection
+                "select * from greeting")) // Query string to fetch data
+            .registerRecordMapper(new JdbcRecordMapper(Greeting.class)) // requirement N°2
+            .registerRecordProcessor(new GreetingProcessor()) // requirement N°3
+            .build();
+
+        // Run easy batch engine
+        EasyBatchReport easyBatchReport = easyBatchEngine.call();
+
+        // Print the batch execution report
+        System.out.println(easyBatchReport);
+    }
+}
 </pre>
         <p>By default, Easy Batch will use the jdbc result set meta data to map <em>greeting</em> table columns to <code>Greeting</code> fields with the same name.</p>
-        <p>That's all, we can now run the batch and see the results!</p>
+        <p>That's all, we can now run the batch and see the results.</p>
 
         <h2 id="3">3. Running the batch</h2>
-
-        <p>To run Easy Batch, we use the following snippet :</p>
-<pre class="prettyprint">
-// Run easy batch engine
-easyBatchEngine.call();
-</pre>
 
         <p>The complete source code of this tutorial is available <a href="https://github.com/benas/easy-batch/tree/master/easybatch-tutorials/src/main/java/io/github/benas/easybatch/tutorials/helloworld/jdbc" target="_blank">here</a>.
 
@@ -279,7 +286,7 @@ INFO: Shutting down easy batch engine
 
 <footer>
     <p class="pull-right"><a href="#"><i class="icon-circle-arrow-up"></i> Back to top</a></p>
-    <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Github</a></p>
+    <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> on <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> GitHub</a></p>
 </footer>
 
 </div>

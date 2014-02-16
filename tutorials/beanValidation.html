@@ -6,6 +6,7 @@
     <title>Java Easy Batch - Tutorials</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mahmoud Ben Hassine">
+	<meta name="description" content="Batch processing with Java made easy!">
     <link rel="shortcut icon" href="../resources/img/gear.ico"/>
 
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +55,7 @@
         <div class="container">
             <a class="brand" href="../index.html"><i class="icon-cogs"></i> Easy Batch</a>
             <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 2.1.1</p>
+                <p class="navbar-text pull-right">Version: 2.1.2</p>
                 <ul class="nav">
                     <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
                     <li class="dropdown">
@@ -219,21 +220,34 @@ public class ProductProcessor extends AbstractRecordProcessor&lt;Product&gt; {
                 <p>The following listing provides this configuration:</p>
 
 <pre class="prettyprint">
-// Configure the product record mapper
-DelimitedRecordMapper&lt;Product&gt; productMapper = new DelimitedRecordMapper(Product.class);
-    productMapper.setDelimiter("|"); // set field delimiter
-    productMapper.setQualifier("\"");// set data qualifier
+public class Launcher {
 
-// Build an easy batch engine
-EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
-    .registerRecordReader(new FlatFileRecordReader("products-jsr303.csv")) // requirement N°1
-    .registerRecordMapper(productMapper) // requirement N°3
-    <strong>.registerRecordValidator(new BeanValidationRecordValidator&lt;Product&gt;())</strong> // requirement N°4
-    .registerRecordProcessor(new ProductProcessor()) // requirement N°5
-    .build();
+    public static void main(String[] args) throws Exception {
+
+        // Configure the product record mapper
+        DelimitedRecordMapper&lt;Product&gt; productMapper = new DelimitedRecordMapper(Product.class);
+            productMapper.setDelimiter("|"); // set field delimiter
+            productMapper.setQualifier("\"");// set data qualifier
+
+        // Build an easy batch engine
+        EasyBatchEngine easyBatchEngine = new EasyBatchEngineBuilder()
+            .registerRecordReader(new FlatFileRecordReader("products-jsr303.csv")) // requirement N°1
+            .registerRecordMapper(productMapper) // requirement N°3
+            <strong>.registerRecordValidator(new BeanValidationRecordValidator&lt;Product&gt;())</strong> // requirement N°4
+            .registerRecordProcessor(new ProductProcessor()) // requirement N°5
+            .build();
+
+        // Run easy batch engine and get execution report
+        EasyBatchReport easyBatchReport = easyBatchEngine.call();
+
+        // Print the batch report
+        System.out.println(easyBatchReport);
+
+    }
+}
 </pre>
 
-                <p>That's all, we can now run the batch and see the results!</p>
+                <p>That's all, we can now run the batch and see the results.</p>
 
                 <h2 id="3">3. Running the tutorial</h2>
 
@@ -359,7 +373,7 @@ Product :
 
     <footer>
         <p class="pull-right"><a href="#"><i class="icon-circle-arrow-up"></i> Back to top</a></p>
-        <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> at <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Github</a></p>
+    <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> on <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> GitHub</a></p>
     </footer>
 
 </div>
