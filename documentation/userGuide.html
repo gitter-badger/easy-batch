@@ -9,28 +9,28 @@
     <meta name="author" content="Easy Batch: batch processing with java made easy">
 
     <!-- Bootstrap CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/easy-batch/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/easy-batch/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Plugins -->
-    <link href="/css/highlight/obsidian.css" media="screen" rel="stylesheet" />
-    <link href="/css/clingify/clingify.css" rel="stylesheet">
+    <link href="/easy-batch/css/highlight/obsidian.css" media="screen" rel="stylesheet" />
+    <link href="/easy-batch/css/clingify/clingify.css" rel="stylesheet">
 
     <!-- Theme style -->
-    <link href="/css/theme-style.min.css" rel="stylesheet">
+    <link href="/easy-batch/css/theme-style.min.css" rel="stylesheet">
 
     <!--Your custom colour override-->
-    <link href="/css/colour-blue.css" id="colour-scheme" rel="stylesheet">
+    <link href="/easy-batch/css/colour-blue.css" id="colour-scheme" rel="stylesheet">
 
     <!-- Your custom override -->
-    <link href="/css/custom-style.css" rel="stylesheet">
+    <link href="/easy-batch/css/custom-style.css" rel="stylesheet">
 
     <!-- HTML5 shiv & respond.js for IE6-8 support of HTML5 elements & media queries -->
     <!--[if lt IE 9]>
-    <script src="/js/plugins/html5shiv/html5shiv.js"></script>
-    <script src="/js/plugins/respond/respond.min.js"></script>
+    <script src="/easy-batch/js/plugins/html5shiv/html5shiv.js"></script>
+    <script src="/easy-batch/js/plugins/respond/respond.min.js"></script>
     <![endif]-->
 
     <link rel="shortcut icon" href="/img/misc/gear.ico">
@@ -63,7 +63,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <!--branding/logo-->
-                        <a class="navbar-brand" href="/index.html" title="Home">
+                        <a class="navbar-brand" href="/easy-batch/index.html" title="Home">
                             <h1><span>Easy</span>Batch</h1>
                         </a>
                         <div class="slogan">Batch processing with Java made easy!</div>
@@ -90,16 +90,16 @@
 
                     <!--main navigation-->
                     <ul class="nav navbar-nav">
-                        <li><a href="/index.html"><i class="fa fa-home fa-lg"></i> Home</a></li>
+                        <li><a href="/easy-batch/index.html"><i class="fa fa-home fa-lg"></i> Home</a></li>
                         <li class="dropdown"> <a href="#" class="dropdown-toggle menu-item" id="features-drop" data-toggle="dropdown"><i class="fa fa-book fa-lg" ></i> Documentation +</a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
-                                <li role="presentation"><a role="menuitem" href="/documentation/gettingStarted.html" class="menu-item"><i class="fa fa-play fa-lg"></i> Getting started</a></li>
-                                <li role="presentation"><a role="menuitem" href="/documentation/architecture.html" tabindex="-1" class="menu-item"><i class="fa fa-flask fa-lg"></i> Architecture</a></li>
-                                <li role="presentation"><a role="menuitem" href="/documentation/userGuide.html" tabindex="-1" class="menu-item"><i class="fa fa-book fa-lg"></i> User guide</a></li>
-                                <li role="presentation"><a role="menuitem" href="/documentation/faq.html" tabindex="-1" class="menu-item"><i class="fa fa-question fa-lg"></i> FAQs</a></li>
+                                <li role="presentation"><a role="menuitem" href="/easy-batch/documentation/gettingStarted.html" class="menu-item"><i class="fa fa-play fa-lg"></i> Getting started</a></li>
+                                <li role="presentation"><a role="menuitem" href="/easy-batch/documentation/architecture.html" tabindex="-1" class="menu-item"><i class="fa fa-flask fa-lg"></i> Architecture</a></li>
+                                <li role="presentation"><a role="menuitem" href="/easy-batch/documentation/userGuide.html" tabindex="-1" class="menu-item"><i class="fa fa-book fa-lg"></i> User guide</a></li>
+                                <li role="presentation"><a role="menuitem" href="/easy-batch/documentation/faq.html" tabindex="-1" class="menu-item"><i class="fa fa-question fa-lg"></i> FAQs</a></li>
                             </ul>
                         </li>
-                        <li><a href="/tutorials/index.html" class="menu-item"><i class="fa fa-code fa-lg"></i> Tutorials</a></li>
+                        <li><a href="/easy-batch/tutorials/index.html" class="menu-item"><i class="fa fa-code fa-lg"></i> Tutorials</a></li>
                         <li class="dropdown"> <a href="" class="dropdown-toggle" id="about-drop" data-toggle="dropdown"><i class="fa fa-thumbs-o-up fa-lg"></i> Get involved +</a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
                                 <li role="presentation"><a role="menuitem" href="https://github.com/benas/easy-batch" target="_blank" tabindex="-1" class="menu-item"><i class="fa fa-github fa-lg"></i> Source repository</a></li>
@@ -120,7 +120,7 @@
 
         <!-- breadcrumb -->
 <ul class="breadcrumb">
-    <li><a href="/index.html">Home</a></li>
+    <li><a href="/easy-batch/index.html">Home</a></li>
     
     
     <li><a href="#">Documentation</a></li>
@@ -418,8 +418,8 @@ myPojoMapper.setDelimiter("|");</code></pre>
                   <li>A field is not enclosed as expected with the data qualifier</li>
               </ul>
 
-              <p>You can find examples of how to use the <code>DelimitedRecordMapper</code> in the <a href="/tutorials/helloworldCSV.html" target="_blank">Hello World CSV tutorial</a>
-                  and in the <a href="/tutorials/products.html" target="_blank">Products statistics tutorial</a>.</p>
+              <p>You can find examples of how to use the <code>DelimitedRecordMapper</code> in the <a href="/easy-batch/tutorials/helloworldCSV.html" target="_blank">Hello World CSV tutorial</a>
+                  and in the <a href="/easy-batch/tutorials/products.html" target="_blank">Products statistics tutorial</a>.</p>
 
               <h4>4.1.2 Mapping fixed-length records</h4>
 
@@ -437,7 +437,7 @@ myPojoMapper.setDelimiter("|");</code></pre>
               <p>If a fixed length record is not well formed, the <code>FixedLengthRecordMapper</code> throws an exception that causes the record to be ignored by the engine.
                   A fixed length record is not well formed if its length is not equal to expected record length.</p>
 
-              <p>You can find an example of how to use the <code>FixedLengthRecordMapper</code> in the <a href="/tutorials/helloworldFLR.html" target="_blank">Hello World FLR tutorial.</a>
+              <p>You can find an example of how to use the <code>FixedLengthRecordMapper</code> in the <a href="/easy-batch/tutorials/helloworldFLR.html" target="_blank">Hello World FLR tutorial.</a>
 
               <h3>4.2 Mapping xml records</h3>
 
@@ -453,7 +453,7 @@ myPojoMapper.setDelimiter("|");</code></pre>
 
               <p>When you create an <code>XmlRecordMapper</code>, you should specify your domain object type and an xsd file against which the xml record should be validated (if no xsd is specified, no validation will be applied).</p>
 
-              <p>You can find an example of how to use the <code>XmlRecordMapper</code> in the <a href="/tutorials/helloworldXML.html" target="_blank">Hello World XML tutorial</a>.</p>
+              <p>You can find an example of how to use the <code>XmlRecordMapper</code> in the <a href="/easy-batch/tutorials/helloworldXML.html" target="_blank">Hello World XML tutorial</a>.</p>
 
               <div class="alert alert-warning">
                   <p>The <code>XmlRecordMapper</code> should be used in conjunction with the <code>XmlRecordReader</code>.</p>
@@ -480,7 +480,7 @@ myPojoMapper.setDelimiter("|");</code></pre>
 
               <p>Easy Batch will then use this array of field names to map data from columns in the same order as in the jdbc record.</p>
 
-              <p>You can find an example of how to use the <code>JdbcRecordMapper</code> in the <a href="/tutorials/helloworldJDBC.html" target="_blank">Hello World JDBC tutorial</a>.</p>
+              <p>You can find an example of how to use the <code>JdbcRecordMapper</code> in the <a href="/easy-batch/tutorials/helloworldJDBC.html" target="_blank">Hello World JDBC tutorial</a>.</p>
 
               <div class="alert alert-warning">
                   <p>The <code>JdbcRecordMapper</code> should be used in conjunction with the <code>JdbcRecordReader</code>.</p>
@@ -529,7 +529,7 @@ myPojoMapper.setDelimiter("|");</code></pre>
 
               <p>With Easy Batch, you can also do some computation on input records and hold a batch result that will be returned at the end of execution.</p>
               <p>This can be done through the <code>getEasyBatchResult</code> method of the <code>RecordProcessor</code> interface : Your record processor can hold the computation result in an instance variable and return it using this method.</p>
-              <p>You can find an example of how to return a computation result in the <a href="/tutorials/products.html" target="_blank">Products statistics tutorial</a>.</p>
+              <p>You can find an example of how to return a computation result in the <a href="/easy-batch/tutorials/products.html" target="_blank">Products statistics tutorial</a>.</p>
 
               <p><span class="label label-info">Heads up!</span> By default, Easy Batch registers a NoOp record processor that logs an information message about the record being processed.</p>
 
@@ -564,7 +564,7 @@ myPojoMapper.setDelimiter("|");</code></pre>
                 <p>The following is a sample HTML report (click on the image for a live HTML demo):</p>
 
                 <div class="pull-center">
-                    <a href="/documentation/htmlReport.html" target="_blank">
+                    <a href="/easy-batch/documentation/htmlReport.html" target="_blank">
                         <img src="/img/eb/htmlReport.png" alt="htmlReport" style="width: 80%"/>
                     </a>
                 </div>
@@ -613,7 +613,7 @@ myPojoMapper.setDelimiter("|");</code></pre>
 <pre><code class="java">EasyBatchReportsAggregator reportsAggregator = new DefaultEasyBatchReportsAggregator();
 EasyBatchReport finalReport = reportsAggregator.aggregateReports(report1, report2);</code></pre>
 
-              <p>You can find an example of how to use the report aggregator in the <a href="/tutorials/jms.html" target="_blank">JMS tutorial</a>.</p>
+              <p>You can find an example of how to use the report aggregator in the <a href="/easy-batch/tutorials/jms.html" target="_blank">JMS tutorial</a>.</p>
 
 
             </div>
@@ -624,28 +624,28 @@ EasyBatchReport finalReport = reportsAggregator.aggregateReports(report1, report
 <h4>About Easy Batch</h4>
 <ul class="list-lg">
     <li >
-        <i class="fa fa-fw fa-angle-right"></i> <a href="/index.html">Overview</a>
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/easy-batch/index.html">Overview</a>
     </li>
     <li >
-        <i class="fa fa-fw fa-angle-right"></i> <a href="/releaseNotes.html">Release notes</a>
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/easy-batch/releaseNotes.html">Release notes</a>
     </li>
 </ul>
 <h4>Documentation</h4>
 <ul class="list-lg">
     <li >
-        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/gettingStarted.html">Getting started</a>
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/easy-batch/documentation/gettingStarted.html">Getting started</a>
     </li>
     <li >
-        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/architecture.html">Architecture</a>
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/easy-batch/documentation/architecture.html">Architecture</a>
     </li>
     <li  class="well" >
-        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/userGuide.html">User guide</a>
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/easy-batch/documentation/userGuide.html">User guide</a>
     </li>
     <li >
-        <i class="fa fa-fw fa-angle-right"></i> <a href="/tutorials/index.html">Tutorials</a>
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/easy-batch/tutorials/index.html">Tutorials</a>
     </li>
     <li >
-        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/faq.html">FAQs</a>
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/easy-batch/documentation/faq.html">FAQs</a>
     </li>
 </ul>
 <h4>Get involved</h4>
@@ -668,9 +668,9 @@ EasyBatchReport finalReport = reportsAggregator.aggregateReports(report1, report
                 <div class="block contact-block">
                     <h3>Documentation</h3>
                     <ul class="fa-ul">
-                        <li><a href="/documentation/gettingStarted.html"><i class="fa fa-li fa-play"></i> Getting started</a></li>
-                        <li><a href="/documentation/architecture.html"><i class="fa fa-li fa-flask"></i> Architecture</a></li>
-                        <li><a href="/documentation/userGuide.html"><i class="fa fa-li fa-book"></i> User guide</a></li>
+                        <li><a href="/easy-batch/documentation/gettingStarted.html"><i class="fa fa-li fa-play"></i> Getting started</a></li>
+                        <li><a href="/easy-batch/documentation/architecture.html"><i class="fa fa-li fa-flask"></i> Architecture</a></li>
+                        <li><a href="/easy-batch/documentation/userGuide.html"><i class="fa fa-li fa-book"></i> User guide</a></li>
                     </ul>
                 </div>
             </div>
@@ -678,9 +678,9 @@ EasyBatchReport finalReport = reportsAggregator.aggregateReports(report1, report
                 <div class="block contact-block">
                     <h3>Tutorials</h3>
                     <ul class="fa-ul">
-                    <li><a href="/tutorials/index.html#basic"><i class="fa fa-li fa-star-o"></i> Basic tutorials</a></li>
-                        <li><a href="/tutorials/index.html#intermediate"><i class="fa fa-li fa-star-half-o"></i> Intermediate tutorials</a></li>
-                        <li><a href="/tutorials/index.html#advanced"><i class="fa fa-li fa-star"></i> Advanced Tutorials</a></li>
+                    <li><a href="/easy-batch/tutorials/index.html#basic"><i class="fa fa-li fa-star-o"></i> Basic tutorials</a></li>
+                        <li><a href="/easy-batch/tutorials/index.html#intermediate"><i class="fa fa-li fa-star-half-o"></i> Intermediate tutorials</a></li>
+                        <li><a href="/easy-batch/tutorials/index.html#advanced"><i class="fa fa-li fa-star"></i> Advanced Tutorials</a></li>
                     </ul>
                 </div>
             </div>
@@ -690,7 +690,7 @@ EasyBatchReport finalReport = reportsAggregator.aggregateReports(report1, report
                     <ul class="fa-ul">
                         <li><a href="https://github.com/benas/easy-batch" target="_blank"><i class="fa fa-li fa-github"></i> Source repository</a></a></li>
                         <li><a href="https://github.com/benas/easy-batch/issues" target="_blank"><i class="fa fa-li fa-bug"></i> Issue tracker</a></li>
-                        <li><a href="/documentation/faq.html"><i class="fa fa-li fa-question"></i> FAQs</a></li>
+                        <li><a href="/easy-batch/documentation/faq.html"><i class="fa fa-li fa-question"></i> FAQs</a></li>
                     </ul>
                 </div>
             </div>
@@ -717,20 +717,20 @@ EasyBatchReport finalReport = reportsAggregator.aggregateReports(report1, report
 </footer>
 
 <!--Scripts -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery-migrate-1.2.1.min.js"></script> <!--Legacy jQuery support for quicksand plugin-->
+<script src="/easy-batch/js/jquery.min.js"></script>
+<script src="/easy-batch/js/jquery-migrate-1.2.1.min.js"></script> <!--Legacy jQuery support for quicksand plugin-->
 
 <!-- Bootstrap JS -->
-<script src="/js/bootstrap.min.js"></script>
+<script src="/easy-batch/js/bootstrap.min.js"></script>
 
 <!--JS plugins-->
-<script src="/js/plugins/clingify/jquery.clingify.min.js"></script>
-<script src="/js/plugins/jRespond/jRespond.js"></script>
+<script src="/easy-batch/js/plugins/clingify/jquery.clingify.min.js"></script>
+<script src="/easy-batch/js/plugins/jRespond/jRespond.js"></script>
 
 <!--Custom scripts mainly used to trigger libraries -->
-<script src="/js/script.min.js"></script>
-<script src="/js/scrolltotop.js"></script>
-<script src="/js/highlight.pack.js"></script>
+<script src="/easy-batch/js/script.min.js"></script>
+<script src="/easy-batch/js/scrolltotop.js"></script>
+<script src="/easy-batch/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
