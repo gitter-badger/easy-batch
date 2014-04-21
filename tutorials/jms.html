@@ -1,36 +1,40 @@
 <!DOCTYPE html>
-
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Java Easy Batch - Tutorials</title>
+    <title>Java Easy Batch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Mahmoud Ben Hassine">
-	<meta name="description" content="Batch processing with Java made easy!">
-    <link rel="shortcut icon" href="../resources/img/gear.ico"/>
+    <meta name="description" content="Mahmoud Ben Hassine">
+    <meta name="author" content="Easy Batch: batch processing with java made easy">
 
-    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/css/prettify.css" rel="stylesheet">
-    <style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 15px;
-        }
-        .sidebar-nav {
-            padding: 9px 0;
-        }
-        .table td.center-td{
-            text-align: center;
-        }
-        .table th.center-th{
-            text-align: center;
-        }
-    </style>
-    <link href="../resources/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../resources/css/sidebar.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <script type="text/javascript" src="../resources/js/prettify.js"></script>
+    <!-- Font Awesome -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Plugins -->
+    <link href="/css/highlight/obsidian.css" media="screen" rel="stylesheet" />
+    <link href="/css/clingify/clingify.css" rel="stylesheet">
+
+    <!-- Theme style -->
+    <link href="/css/theme-style.min.css" rel="stylesheet">
+
+    <!--Your custom colour override-->
+    <link href="/css/colour-blue.css" id="colour-scheme" rel="stylesheet">
+
+    <!-- Your custom override -->
+    <link href="/css/custom-style.css" rel="stylesheet">
+
+    <!-- HTML5 shiv & respond.js for IE6-8 support of HTML5 elements & media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/plugins/html5shiv/html5shiv.js"></script>
+    <script src="/js/plugins/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/img/misc/gear.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript">
 
@@ -47,114 +51,126 @@
     </script>
 
 </head>
+<body class="page page-index-static">
 
-<body onload="prettyPrint()">
+<a href="#content" class="sr-only">Skip to content</a>
+<div id="navigation" class="wrapper">
+    <div class="navbar-static-top">
 
-<div class="navbar navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="../index.html"><i class="icon-cogs"></i> Easy Batch</a>
-            <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 2.1.3</p>
-                <ul class="nav">
-                    <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
-                    <li class="dropdown">
-                        <a id="documentation" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book"></i> Documentation<b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="documentation">
-                            <li><a href="../documentation/gettingStarted.html"><i class="icon-play"></i> Getting started</a></li>
-                            <li><a href="../documentation/architecture.html"><i class="icon-beaker"></i> Architecture</a></li>
-                            <li><a href="../documentation/benchmark.html"><i class="icon-dashboard"></i> Performance benchmark</a></li>
-                            <li><a href="../documentation/userGuide.html"><i class="icon-book"></i> User Guide</a></li>
-                            <li><a href="index.html"><i class="icon-code"></i> Tutorials</a></li>
-                            <li><a href="../documentation/faq.html"><i class="icon-question"></i> FAQ</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a id="getinvolved" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-thumbs-up"></i> Get involved<b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="getinvolved">
-                            <li><a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Source repository</a></li>
-                            <li><a href="https://github.com/benas/easy-batch/issues" target="_blank"><i class="icon-bug"></i> Issue tracker</a></li>
-                        </ul>
-                    </li>
-                </ul>
+        <!--Header & Branding region-->
+        <div class="header">
+            <div class="header-inner container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <!--branding/logo-->
+                        <a class="navbar-brand" href="/index.html" title="Home">
+                            <h1><span>Easy</span>Batch</h1>
+                        </a>
+                        <div class="slogan">Batch processing with Java made easy!</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container" data-toggle="clingify">
+            <div class="navbar">
+                <!--
+              mobile collapse menu button
+              - data-toggle="toggle" = default BS menu
+              - data-toggle="jpanel-menu" = jPanel Menu
+              -->
+                <a class="navbar-btn" data-toggle="jpanel-menu" data-target=".navbar-collapse"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </a>
+
+                <!--user menu-->
+                <div class="user-menu pull-right"> <a href="" data-toggle="tooltip" class="btn btn-primary">version : 2.1.3</a> </div>
+
+                <!--everything within this div is collapsed on mobile-->
+                <div class="navbar-collapse collapse">
+
+                    <!--main navigation-->
+                    <ul class="nav navbar-nav">
+                        <li><a href="/index.html"><i class="fa fa-home fa-lg"></i> Home</a></li>
+                        <li class="dropdown"> <a href="#" class="dropdown-toggle menu-item" id="features-drop" data-toggle="dropdown"><i class="fa fa-book fa-lg" ></i> Documentation +</a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
+                                <li role="presentation"><a role="menuitem" href="/documentation/gettingStarted.html" class="menu-item"><i class="fa fa-play fa-lg"></i> Getting started</a></li>
+                                <li role="presentation"><a role="menuitem" href="/documentation/architecture.html" tabindex="-1" class="menu-item"><i class="fa fa-flask fa-lg"></i> Architecture</a></li>
+                                <li role="presentation"><a role="menuitem" href="/documentation/userGuide.html" tabindex="-1" class="menu-item"><i class="fa fa-book fa-lg"></i> User guide</a></li>
+                                <li role="presentation"><a role="menuitem" href="/documentation/faq.html" tabindex="-1" class="menu-item"><i class="fa fa-question fa-lg"></i> FAQs</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/tutorials/index.html" class="menu-item"><i class="fa fa-code fa-lg"></i> Tutorials</a></li>
+                        <li class="dropdown"> <a href="" class="dropdown-toggle" id="about-drop" data-toggle="dropdown"><i class="fa fa-thumbs-o-up fa-lg"></i> Get involved +</a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
+                                <li role="presentation"><a role="menuitem" href="https://github.com/benas/easy-batch" target="_blank" tabindex="-1" class="menu-item"><i class="fa fa-github fa-lg"></i> Source repository</a></li>
+                                <li role="presentation"><a role="menuitem" href="https://github.com/benas/easy-batch/issues" target="_blank" tabindex="-1" class="menu-item"><i class="fa fa-bug fa-lg"></i> Issue tracker</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!--/.navbar-collapse -->
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-<div class="row-fluid">
+<div id="content">
+    <div class="container">
 
-<div class="span3">
-    <div class="well sidebar-nav bs-docs-sidenav" data-spy="affix">
-        <ul class="nav nav-list">
-            <li class="nav-header">About Easy Batch</li>
-            <li><a href="../index.html"><i class="icon-home"></i> Overview</a></li>
-            <li><a href="../releaseNotes.html"><i class="icon-tags"></i> Release notes</a></li>
-            <li class="nav-header">Documentation</li>
-            <li><a href="../documentation/gettingStarted.html"><i class="icon-play"></i> Getting started</a></li>
-            <li><a href="../documentation/architecture.html"><i class="icon-beaker"></i> Architecture</a></li>
-            <li><a href="../documentation/benchmark.html"><i class="icon-dashboard"></i> Performance benchmark</a></li>
-            <li><a href="../documentation/userGuide.html"><i class="icon-book"></i> User Guide</a></li>
-            <li class="active"><a href="index.html"><i class="icon-code"></i> Tutorials</a></li>
-            <li><a href="../documentation/faq.html"><i class="icon-question"></i> FAQ</a></li>
-            <li class="nav-header">Get involved</li>
-            <li><a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Source repository</a></li>
-            <li><a href="https://github.com/benas/easy-batch/issues" target="_blank"><i class="icon-bug"></i> Issue tracker</a></li>
-        </ul>
-    </div>
-</div>
+        <!-- breadcrumb -->
+<ul class="breadcrumb">
+    <li><a href="/index.html">Home</a></li>
+    
+    <li><a href="/tutorials/index.html">Tutorials</a></li>
+    
+    
+    <li class="active">JMS tutorial</li>
+</ul>
 
-<div class="span9">
+        <div id="row">
+            <div class="col-md-9">
 
-<div class="page-header">
-    <h1>JMS Tutorial</h1>
-</div>
+                <h1 class="title-divider"><span>JMS tutorial</span></h1>
 
-<div class="row-fluid">
+                              <h2 id="1">1. Description</h2>
 
-<h2 id="1">1. Description</h2>
-<p>In this tutorial, we will see how to use Easy Batch to asynchronously process data in parallel from a JMS queue:</p>
+              <p>In this tutorial, we will see how to use Easy Batch to asynchronously process data in parallel from a JMS queue:</p>
 
-<p align="center"><img src="../resources/img/jms.png"/></p>
+              <p align="center"><img src="/img/eb/jms.png"/></p>
 
-<p>We will also show how to use the <code>EasyBatchReportsAggregator</code> API to merge partial reports into a global and final one.</p>
-<p>We will create a custom record reader that pulls data from the JMS queue. To distribute the work, messages posted to the queue will be processed by several Easy Batch engines.
-    We will use the same resources as in the <a href="./helloworldCSV.html" target="_blank">Hello World tutorial</a> (greetings CSV data and <code>Greeting</code> POJO) to create the application:</p>
+              <p>We will also show how to use the <code>EasyBatchReportsAggregator</code> API to merge partial reports into a global and final one.</p>
+              <p>We will create a custom record reader that pulls data from the JMS queue. To distribute the work, messages posted to the queue will be processed by several Easy Batch engines.
+                  We will use the same resources as in the <a href="/tutorials/helloworldCSV.html" target="_blank">Hello World tutorial</a> (greetings CSV data and <code>Greeting</code> POJO) to create the application:</p>
 
-<div>
-    <div class="span6">
-<pre class="prettyprint">
-id,name
+              <div>
+                  <div class="col-md-6">
+<pre><code class="java">id,name
 1,foo
 2,bar
 3,bax
-4,baz
-</pre>
-    </div>
-    <div class="span6">
+4,baz</code></pre>
+                  </div>
+                  <div class="col-md-6">
 
-<pre class="prettyprint">
-public class Greeting {
+<pre><code class="java">public class Greeting {
     private int id;
     private String name;
     //Getters and setters omitted
-}
-</pre>
-    </div>
-</div>
+}</code></pre>
+                  </div>
+              </div>
 
-<p>As in the <a href="./helloworldCSV.html" target="_blank">Hello World tutorial</a>, the goal is to simply write a greeting message to the console for each CSV record.
-    We will use the same <code>GreetingProcessor</code> in this tutorial.</p>
+              <p>As in the <a href="/tutorials/helloworldCSV.html" target="_blank">Hello World tutorial</a>, the goal is to simply write a greeting message to the console for each CSV record.
+                  We will use the same <code>GreetingProcessor</code> in this tutorial.</p>
 
-<p>So let's get started!</p>
+              <p>So let's get started!</p>
 
-<h2 id="2">2. Implementation using Easy Batch</h2>
+              <h2 id="2">2. Implementation using Easy Batch</h2>
 
-<p>The main point in this tutorial is how to read data from the JMS queue. We will implement a custom record reader that will pull data from the queue. So here is the implementation:</p>
+              <p>The main point in this tutorial is how to read data from the JMS queue. We will implement a custom record reader that will pull data from the queue. So here is the implementation:</p>
 
-<pre class="prettyprint">
-public class GreetingJmsReader implements RecordReader {
+<pre><code class="java">public class GreetingJmsReader implements RecordReader {
 
     private int id;
 
@@ -197,7 +213,7 @@ public class GreetingJmsReader implements RecordReader {
     }
 
     <strong>@Override
-    public Record readNextRecord() throws Exception {
+        public Record readNextRecord() throws Exception {
         String record;
         Message m = queueReceiver.receive();
         TextMessage message = (TextMessage) m;
@@ -205,7 +221,7 @@ public class GreetingJmsReader implements RecordReader {
         stop = record.equalsIgnoreCase("quit");
         System.out.println("Greeting Reader " + id + " : received JMS message: " + record);
         return new StringRecord(++currentRecordNumber, record);
-    } </strong>
+        } </strong>
 
     @Override
     public Long getTotalRecords() {
@@ -234,15 +250,13 @@ public class GreetingJmsReader implements RecordReader {
             queueReceiver.close();
         }
     }
-}
-</pre>
+}</code></pre>
 
-<p>The implementation is self explanatory: the reader uses a JMS connection factory and reads greetings records from the queue named <code>q</code> until it receives the message <code>quit</code>.</p>
+              <p>The implementation is self explanatory: the reader uses a JMS connection factory and reads greetings records from the queue named <code>q</code> until it receives the message <code>quit</code>.</p>
 
-<p>Now let's create 2 Easy Batch instances to process data posted to the JMS queue:</p>
+              <p>Now let's create 2 Easy Batch instances to process data posted to the JMS queue:</p>
 
-<pre class="prettyprint">
-public class Launcher {
+<pre><code class="java">public class Launcher {
 
     public static void main(String[] args) throws Exception {
 
@@ -284,16 +298,14 @@ public class Launcher {
                 .build();
     }
 
-}
-</pre>
+}</code></pre>
 
-<p>To keep the tutorial simple, we have used an embedded message broker. The broker setup details are not shown here for readability sake.</p>
-<p>To launch Easy Batch instances in parallel, we have used a <code>java.util.concurrent.ExecutorService</code> with a thread pool of 2 workers.</p>
+              <p>To keep the tutorial simple, we have used an embedded message broker. The broker setup details are not shown here for readability sake.</p>
+              <p>To launch Easy Batch instances in parallel, we have used a <code>java.util.concurrent.ExecutorService</code> with a thread pool of 2 workers.</p>
 
-<p>To send greetings records as JMS messages to the queue, we will use the following utility class:</p>
+              <p>To send greetings records as JMS messages to the queue, we will use the following utility class:</p>
 
-<pre class="prettyprint">
-public class JMSSenderLauncher {
+<pre><code class="java">public class JMSSenderLauncher {
 
     public static void main(String[] args) throws Exception {
 
@@ -312,45 +324,41 @@ public class JMSSenderLauncher {
         JMSUtil.closeJMSSession();
     }
 
-}
-</pre>
+}</code></pre>
 
-<p>This class makes the tutorial interactive : we will type in data in the console to send it to the JMS queue and see how and which Easy Batch instance will process it.
-    To stop the execution, we have to send <em>quit</em> message to the queue.</p>
-<p>That's all, we can now run the tutorial and see the results.</p>
+              <p>This class makes the tutorial interactive : we will type in data in the console to send it to the JMS queue and see how and which Easy Batch instance will process it.
+                  To stop the execution, we have to send <em>quit</em> message to the queue.</p>
+              <p>That's all, we can now run the tutorial and see the results.</p>
 
-<h2 id="3">3. Running the tutorial</h2>
+              <h2 id="3">3. Running the tutorial</h2>
 
-<p>The complete source code of this tutorial is available <a href="https://github.com/benas/easy-batch/tree/master/easybatch-tutorials/src/main/java/io/github/benas/easybatch/tutorials/jms" target="_blank">here</a>.
-    To run the tutorial with maven, first launch the following command in the <code>easybatch-tutorials</code> directory :</p>
+              <p>The complete source code of this tutorial is available <a href="https://github.com/benas/easy-batch/tree/master/easybatch-tutorials/src/main/java/io/github/benas/easybatch/tutorials/jms" target="_blank">here</a>.
+                  To run the tutorial with maven, first launch the following command in the <code>easybatch-tutorials</code> directory :</p>
 
-<p><span class="icon-stack"> <i class="icon-sign-blank icon-stack-base"></i> <i class="icon-terminal icon-light"></i> </span>
-    <em><strong>mvn exec:java -PrunJmsTutorial</strong></em>
-</p>
+              <p>
+                  <kbd><i class="fa fa-terminal"></i> mvn exec:java -PrunJmsTutorial</kbd>
+              </p>
 
-<p>This will start the embedded broker and Easy Batch instances that will listen to JMS messages posted to the queue. Then launch the JMS sender utility class in a separate console to be able to send data to the queue:</p>
+              <p>This will start the embedded broker and Easy Batch instances that will listen to JMS messages posted to the queue. Then launch the JMS sender utility class in a separate console to be able to send data to the queue:</p>
 
-<p><span class="icon-stack"> <i class="icon-sign-blank icon-stack-base"></i> <i class="icon-terminal icon-light"></i> </span>
-    <em><strong>mvn exec:java -PrunJmsSender</strong></em>
-</p>
+              <p>
+                  <kbd><i class="fa fa-terminal"></i> mvn exec:java -PrunJmsSender</kbd>
+              </p>
 
-<p>You will be able to type in CSV greetings records in the console and see which Easy Batch engine has processed the record and what was the processing result. Here is a sample output:</p>
+              <p>You will be able to type in CSV greetings records in the console and see which Easy Batch engine has processed the record and what was the processing result. Here is a sample output:</p>
 
-<div>
-    <div class="span6">
-<pre class="prettyprint">
-1,foo
+              <div>
+                  <div class="col-md-6">
+<pre><code class="java">1,foo
 Message '1,foo' sent to JMS queue
 2,bar
 Message '2,bar' sent to JMS queue
 quit
-Message 'quit' sent to JMS queue
-</pre>
-    </div>
-    <div class="span6">
+Message 'quit' sent to JMS queue</code></pre>
+                  </div>
+                  <div class="col-md-6">
 
-<pre class="prettyprint">
-INFO: Initializing easy batch engine
+<pre><code class="java">INFO: Initializing easy batch engine
 INFO: Data source: JMS queue: q
 INFO: Strict mode: false
 INFO: Total records = N/A
@@ -358,34 +366,133 @@ INFO: easy batch engine is running...
 Greeting Reader 2 : received JMS message: 1,foo
 Hi foo! Your id is 1
 Greeting Reader 1 : received JMS message: 2,bar
-Hi bar! Your id is 2
-</pre>
+Hi bar! Your id is 2</code></pre>
+                  </div>
+              </div>
+
+              <h2 id="4">4. Conclusion</h2>
+              <p> In this tutorial, we have seen how to use Easy Batch along with JMS to create an asynchronous batch application.</p>
+              <p>We have implemented a custom record reader that reads data from a JMS queue. To distribute the work across multiple Easy Batch instances, we have used
+                  a thread pool through the <code>ExecutorService</code> and submitted Easy Batch instances to it. This tutorial shows a powerful technique to distribute data processing
+                  across multiple Easy Batch "workers" asynchronously.</p>
+              <p>Finally, we have also seen how to use the <code>EasyBatchReportsAggregator</code> API to merge partial reports into a global one.</p>
+
+
+            </div>
+
+            <div class="col-md-3 sidebar sidebar-right">
+                <!-- <div class="inner" data-spy="affix" data-offset-top="40" data-offset-bottom="300"> -->
+<div class="inner">
+<h4>About Easy Batch</h4>
+<ul class="list-lg">
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/index.html">Overview</a>
+    </li>
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/releaseNotes.html">Release notes</a>
+    </li>
+</ul>
+<h4>Documentation</h4>
+<ul class="list-lg">
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/gettingStarted.html">Getting started</a>
+    </li>
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/architecture.html">Architecture</a>
+    </li>
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/userGuide.html">User guide</a>
+    </li>
+    <li  class="well" >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/tutorials/index.html">Tutorials</a>
+    </li>
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/faq.html">FAQs</a>
+    </li>
+</ul>
+<h4>Get involved</h4>
+<ul class="list-lg">
+    <li><i class="fa fa-fw fa-angle-right"></i> <a href="https://github.com/benas/easy-batch" target="_blank">Source repository</a></li>
+    <li><i class="fa fa-fw fa-angle-right"></i> <a href="https://github.com/benas/easy-batch/issues" target="_blank">Issue tracker</a></li>
+</ul>
+</div>
+            </div>
+        </div>
+
+
     </div>
 </div>
+<!-- FOOTER -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col">
+                <div class="block contact-block">
+                    <h3>Documentation</h3>
+                    <ul class="fa-ul">
+                        <li><a href="/documentation/gettingStarted.html"><i class="fa fa-li fa-play"></i> Getting started</a></li>
+                        <li><a href="/documentation/architecture.html"><i class="fa fa-li fa-flask"></i> Architecture</a></li>
+                        <li><a href="/documentation/userGuide.html"><i class="fa fa-li fa-book"></i> User guide</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col">
+                <div class="block contact-block">
+                    <h3>Tutorials</h3>
+                    <ul class="fa-ul">
+                    <li><a href="/tutorials/index.html#basic"><i class="fa fa-li fa-star-o"></i> Basic tutorials</a></li>
+                        <li><a href="/tutorials/index.html#intermediate"><i class="fa fa-li fa-star-half-o"></i> Intermediate tutorials</a></li>
+                        <li><a href="/tutorials/index.html#advanced"><i class="fa fa-li fa-star"></i> Advanced Tutorials</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col">
+                <div class="block contact-block">
+                    <h3>Get involved</h3>
+                    <ul class="fa-ul">
+                        <li><a href="https://github.com/benas/easy-batch" target="_blank"><i class="fa fa-li fa-github"></i> Source repository</a></a></li>
+                        <li><a href="https://github.com/benas/easy-batch/issues" target="_blank"><i class="fa fa-li fa-bug"></i> Issue tracker</a></li>
+                        <li><a href="/documentation/faq.html"><i class="fa fa-li fa-question"></i> FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
 
-<h2 id="4">4. Conclusion</h2>
-<p> In this tutorial, we have seen how to use Easy Batch along with JMS to create an asynchronous batch application.</p>
-<p>We have implemented a custom record reader that reads data from a JMS queue. To distribute the work across multiple Easy Batch instances, we have used
-a thread pool through the <code>ExecutorService</code> and submitted Easy Batch instances to it. This tutorial shows a powerful technique to distribute data processing
-    across multiple Easy Batch "workers" asynchronously.</p>
-<p>Finally, we have also seen how to use the <code>EasyBatchReportsAggregator</code> API to merge partial reports into a global one.</p>
+        </div>
 
-</div>
+        <p class="back-top floatright" style="display: none;">
+            <a href="#top"><span></span></a>
+        </p>
 
-</div>
+        <div class="row">
+            <div id="toplink"><a href="#top" class="top-link" title="Back to top">Back To Top <i class="fa fa-chevron-up"></i></a></div>
 
-</div>
-
-<hr>
-
-<footer>
-    <p class="pull-right"><a href="#"><i class="icon-circle-arrow-up"></i> Back to top</a></p>
-    <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> on <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> GitHub</a></p>
+            <div class="subfooter">
+                <div class="col-md-6">
+                    <p>&copy; Easy Batch is created by <a href="http://www.mahmoudbenhassine.com" target="_blank">Mahmoud Ben Hassine</a></p>
+                </div>
+                <div class="col-md-6">
+                    <p class="footer-menu">Easy Batch is released under the <a href="http://opensource.org/licenses/mit-license.php/" target="_blank">MIT license</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
 
-</div>
+<!--Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script> <!--Legacy jQuery support for quicksand plugin-->
 
-<script src="../resources/js/jquery.js"></script>
-<script src="../resources/js/bootstrap.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="/js/bootstrap.min.js"></script>
 
-</body></html>
+<!--JS plugins-->
+<script src="/js/plugins/clingify/jquery.clingify.min.js"></script>
+<script src="/js/plugins/jRespond/jRespond.js"></script>
+
+<!--Custom scripts mainly used to trigger libraries -->
+<script src="/js/script.min.js"></script>
+<script src="/js/scrolltotop.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

@@ -1,30 +1,40 @@
 <!DOCTYPE html>
-
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Java Easy Batch - Getting started</title>
+    <title>Java Easy Batch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Mahmoud Ben Hassine">
-	<meta name="description" content="Batch processing with Java made easy!">
-    <link rel="shortcut icon" href="../resources/img/gear.ico"/>
+    <meta name="description" content="Mahmoud Ben Hassine">
+    <meta name="author" content="Easy Batch: batch processing with java made easy">
 
-    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/css/prettify.css" rel="stylesheet">
-    <style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 15px;
-        }
-        .sidebar-nav {
-            padding: 9px 0;
-        }
-    </style>
-    <link href="../resources/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../resources/css/sidebar.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <script type="text/javascript" src="../resources/js/prettify.js"></script>
+    <!-- Font Awesome -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Plugins -->
+    <link href="/css/highlight/obsidian.css" media="screen" rel="stylesheet" />
+    <link href="/css/clingify/clingify.css" rel="stylesheet">
+
+    <!-- Theme style -->
+    <link href="/css/theme-style.min.css" rel="stylesheet">
+
+    <!--Your custom colour override-->
+    <link href="/css/colour-blue.css" id="colour-scheme" rel="stylesheet">
+
+    <!-- Your custom override -->
+    <link href="/css/custom-style.css" rel="stylesheet">
+
+    <!-- HTML5 shiv & respond.js for IE6-8 support of HTML5 elements & media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/plugins/html5shiv/html5shiv.js"></script>
+    <script src="/js/plugins/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/img/misc/gear.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript">
 
@@ -33,134 +43,250 @@
         _gaq.push(['_trackPageview']);
 
         (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
 
     </script>
 
 </head>
+<body class="page page-index-static">
 
-<body onload="prettyPrint()">
+<a href="#content" class="sr-only">Skip to content</a>
+<div id="navigation" class="wrapper">
+    <div class="navbar-static-top">
 
-<div class="navbar navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="../index.html"><i class="icon-cogs"></i> Easy Batch</a>
-            <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">Version: 2.1.3</p>
-                <ul class="nav">
-                    <li><a href="../index.html"><i class="icon-home"></i> Home</a></li>
-                    <li class="dropdown">
-                        <a id="documentation" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book"></i> Documentation<b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="documentation">
-                            <li><a href="../documentation/gettingStarted.html"><i class="icon-play"></i> Getting started</a></li>
-                            <li><a href="../documentation/architecture.html"><i class="icon-beaker"></i> Architecture</a></li>
-                            <li><a href="../documentation/benchmark.html"><i class="icon-dashboard"></i> Performance benchmark</a></li>
-                            <li><a href="../documentation/userGuide.html"><i class="icon-book"></i> User Guide</a></li>
-                            <li><a href="../tutorials/index.html"><i class="icon-code"></i> Tutorials</a></li>
-                            <li><a href="../documentation/faq.html"><i class="icon-question"></i> FAQ</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a id="getinvolved" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-thumbs-up"></i> Get involved<b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="getinvolved">
-                            <li><a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Source repository</a></li>
-                            <li><a href="https://github.com/benas/easy-batch/issues" target="_blank"><i class="icon-bug"></i> Issue tracker</a></li>
-                        </ul>
-                    </li>
-                </ul>
+        <!--Header & Branding region-->
+        <div class="header">
+            <div class="header-inner container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <!--branding/logo-->
+                        <a class="navbar-brand" href="/index.html" title="Home">
+                            <h1><span>Easy</span>Batch</h1>
+                        </a>
+                        <div class="slogan">Batch processing with Java made easy!</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container" data-toggle="clingify">
+            <div class="navbar">
+                <!--
+              mobile collapse menu button
+              - data-toggle="toggle" = default BS menu
+              - data-toggle="jpanel-menu" = jPanel Menu
+              -->
+                <a class="navbar-btn" data-toggle="jpanel-menu" data-target=".navbar-collapse"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </a>
+
+                <!--user menu-->
+                <div class="user-menu pull-right"> <a href="" data-toggle="tooltip" class="btn btn-primary">version : 2.1.3</a> </div>
+
+                <!--everything within this div is collapsed on mobile-->
+                <div class="navbar-collapse collapse">
+
+                    <!--main navigation-->
+                    <ul class="nav navbar-nav">
+                        <li><a href="/index.html"><i class="fa fa-home fa-lg"></i> Home</a></li>
+                        <li class="dropdown"> <a href="#" class="dropdown-toggle menu-item" id="features-drop" data-toggle="dropdown"><i class="fa fa-book fa-lg" ></i> Documentation +</a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
+                                <li role="presentation"><a role="menuitem" href="/documentation/gettingStarted.html" class="menu-item"><i class="fa fa-play fa-lg"></i> Getting started</a></li>
+                                <li role="presentation"><a role="menuitem" href="/documentation/architecture.html" tabindex="-1" class="menu-item"><i class="fa fa-flask fa-lg"></i> Architecture</a></li>
+                                <li role="presentation"><a role="menuitem" href="/documentation/userGuide.html" tabindex="-1" class="menu-item"><i class="fa fa-book fa-lg"></i> User guide</a></li>
+                                <li role="presentation"><a role="menuitem" href="/documentation/faq.html" tabindex="-1" class="menu-item"><i class="fa fa-question fa-lg"></i> FAQs</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/tutorials/index.html" class="menu-item"><i class="fa fa-code fa-lg"></i> Tutorials</a></li>
+                        <li class="dropdown"> <a href="" class="dropdown-toggle" id="about-drop" data-toggle="dropdown"><i class="fa fa-thumbs-o-up fa-lg"></i> Get involved +</a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
+                                <li role="presentation"><a role="menuitem" href="https://github.com/benas/easy-batch" target="_blank" tabindex="-1" class="menu-item"><i class="fa fa-github fa-lg"></i> Source repository</a></li>
+                                <li role="presentation"><a role="menuitem" href="https://github.com/benas/easy-batch/issues" target="_blank" tabindex="-1" class="menu-item"><i class="fa fa-bug fa-lg"></i> Issue tracker</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!--/.navbar-collapse -->
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row-fluid">
+<div id="content">
+    <div class="container">
 
-        <div class="span3">
-            <div class="well sidebar-nav bs-docs-sidenav" data-spy="affix">
-                <ul class="nav nav-list">
-                    <li class="nav-header">About Easy Batch</li>
-                    <li><a href="../index.html"><i class="icon-home"></i> Overview</a></li>
-                    <li><a href="../releaseNotes.html"><i class="icon-tags"></i> Release notes</a></li>
-                    <li class="nav-header">Documentation</li>
-                    <li class="active"><a href="../documentation/gettingStarted.html"><i class="icon-play"></i> Getting started</a></li>
-                    <li><a href="../documentation/architecture.html"><i class="icon-beaker"></i> Architecture</a></li>
-                    <li><a href="../documentation/benchmark.html"><i class="icon-dashboard"></i> Performance benchmark</a></li>
-                    <li><a href="../documentation/userGuide.html"><i class="icon-book"></i> User Guide</a></li>
-                    <li><a href="../tutorials/index.html"><i class="icon-code"></i> Tutorials</a></li>
-                    <li><a href="../documentation/faq.html"><i class="icon-question"></i> FAQ</a></li>
-                    <li class="nav-header">Get involved</li>
-                    <li><a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> Source repository</a></li>
-                    <li><a href="https://github.com/benas/easy-batch/issues" target="_blank"><i class="icon-bug"></i> Issue tracker</a></li>
-                </ul>
-            </div>
-        </div>
+        <!-- breadcrumb -->
+<ul class="breadcrumb">
+    <li><a href="/index.html">Home</a></li>
+    
+    
+    <li><a href="#">Documentation</a></li>
+    
+    <li class="active">Getting started</li>
+</ul>
 
-        <div class="span9">
+        <div id="row">
+            <div class="col-md-9">
 
-            <div class="page-header">
-                <h1>Getting Started</h1>
-            </div>
+                <h1 class="title-divider"><span>Getting started</span></h1>
 
-            <div class="row-fluid">
+                              <h2 id="1">1. Prerequisite</h2>
 
-                <h2 id="1">1. Prerequisite</h2>
+              <p>Easy Batch requires a Java 1.6+ runtime.</p>
 
-                <p>Easy Batch requires a Java 1.6+ runtime.</p>
+              <h2 id="2">2. Build Easy Batch</h2>
 
-                <h2 id="2">2. Build Easy Batch</h2>
+              <h3 id="2.1">2.1 Get source code</h3>
 
-                <h3 id="2.1">2.1 Get source code</h3>
+              <p>Easy Batch uses <a href="http://git-scm.com/" target="_blank">Git</a> as source control manager and is hosted on GitHub. To download Easy Batch source code, clone it's git repository as follows :</p>
 
-                <p>Easy Batch uses <a href="http://git-scm.com/">Git</a> as source control manager and is hosted on GitHub. To download Easy Batch source code, clone it's git repository as follows :</p>
 
-                <p><span class="icon-stack"> <i class="icon-sign-blank icon-stack-base"></i> <i class="icon-terminal icon-light"></i> </span>
-                    <em><strong>git clone https://github.com/benas/easy-batch.git</strong></em>
-                </p>
+              <p>
+                  <kbd><i class="fa fa-terminal"></i> git clone https://github.com/benas/easy-batch.git</kbd>
+              </p>
 
-                <p>You can also get the source code in a zip file from the home page of the project on GitHub : <a href="https://github.com/benas/easy-batch" target="_blank">https://github.com/benas/easy-batch</a></p>
+              <p>You can also get the source code in a zip file from the home page of the project on GitHub:
+                  <a href="https://github.com/benas/easy-batch" target="_blank">https://github.com/benas/easy-batch</a></p>
 
-                <h3 id="2.2">2.2 Build with Maven</h3>
+              <h3 id="2.2">2.2 Build with Maven</h3>
 
-                <p>Easy Batch uses <a href="http://maven.apache.org/" target="_blank">maven</a> as build tool. To build Easy Batch with maven, use the following command from the root directory of the project :</p>
+              <p>Easy Batch uses <a href="http://maven.apache.org/" target="_blank">maven</a> as build tool. To build Easy Batch with maven, use the following command from the root directory of the project :</p>
 
-                <p><span class="icon-stack"> <i class="icon-sign-blank icon-stack-base"></i> <i class="icon-terminal icon-light"></i> </span>
-                    <em><strong>mvn install</strong></em>
-                </p>
+              <p>
+                  <kbd><i class="fa fa-terminal"></i> mvn install</kbd>
+              </p>
 
-                <h2 id="3">3. Use Easy Batch</h2>
+              <h2 id="3">3. Use Easy Batch</h2>
 
-                <p>To use Easy Batch, you have to add <strong>easybatch-core-2.1.3.jar</strong> to your application's classpath.</p>
+              <p>To use Easy Batch, you have to add <strong>easybatch-core-2.1.3.jar</strong> to your application's classpath.</p>
 
-                <p>If you use maven, add  the following dependency to your project pom :</p>
+              <p>If you use maven, add  the following dependency to your project pom :</p>
 
-<pre class="prettyprint">
-&lt;dependency&gt;
+<pre><code class="xml">&lt;dependency&gt;
     &lt;groupId&gt;io.github.benas&lt;/groupId&gt;
     &lt;artifactId&gt;easybatch-core&lt;/artifactId&gt;
     &lt;version&gt;2.1.3&lt;/version&gt;
-&lt;/dependency&gt;
-</pre>
+&lt;/dependency&gt;</code></pre>
 
+
+            </div>
+
+            <div class="col-md-3 sidebar sidebar-right">
+                <!-- <div class="inner" data-spy="affix" data-offset-top="40" data-offset-bottom="300"> -->
+<div class="inner">
+<h4>About Easy Batch</h4>
+<ul class="list-lg">
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/index.html">Overview</a>
+    </li>
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/releaseNotes.html">Release notes</a>
+    </li>
+</ul>
+<h4>Documentation</h4>
+<ul class="list-lg">
+    <li  class="well" >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/gettingStarted.html">Getting started</a>
+    </li>
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/architecture.html">Architecture</a>
+    </li>
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/userGuide.html">User guide</a>
+    </li>
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/tutorials/index.html">Tutorials</a>
+    </li>
+    <li >
+        <i class="fa fa-fw fa-angle-right"></i> <a href="/documentation/faq.html">FAQs</a>
+    </li>
+</ul>
+<h4>Get involved</h4>
+<ul class="list-lg">
+    <li><i class="fa fa-fw fa-angle-right"></i> <a href="https://github.com/benas/easy-batch" target="_blank">Source repository</a></li>
+    <li><i class="fa fa-fw fa-angle-right"></i> <a href="https://github.com/benas/easy-batch/issues" target="_blank">Issue tracker</a></li>
+</ul>
+</div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- FOOTER -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col">
+                <div class="block contact-block">
+                    <h3>Documentation</h3>
+                    <ul class="fa-ul">
+                        <li><a href="/documentation/gettingStarted.html"><i class="fa fa-li fa-play"></i> Getting started</a></li>
+                        <li><a href="/documentation/architecture.html"><i class="fa fa-li fa-flask"></i> Architecture</a></li>
+                        <li><a href="/documentation/userGuide.html"><i class="fa fa-li fa-book"></i> User guide</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col">
+                <div class="block contact-block">
+                    <h3>Tutorials</h3>
+                    <ul class="fa-ul">
+                    <li><a href="/tutorials/index.html#basic"><i class="fa fa-li fa-star-o"></i> Basic tutorials</a></li>
+                        <li><a href="/tutorials/index.html#intermediate"><i class="fa fa-li fa-star-half-o"></i> Intermediate tutorials</a></li>
+                        <li><a href="/tutorials/index.html#advanced"><i class="fa fa-li fa-star"></i> Advanced Tutorials</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col">
+                <div class="block contact-block">
+                    <h3>Get involved</h3>
+                    <ul class="fa-ul">
+                        <li><a href="https://github.com/benas/easy-batch" target="_blank"><i class="fa fa-li fa-github"></i> Source repository</a></a></li>
+                        <li><a href="https://github.com/benas/easy-batch/issues" target="_blank"><i class="fa fa-li fa-bug"></i> Issue tracker</a></li>
+                        <li><a href="/documentation/faq.html"><i class="fa fa-li fa-question"></i> FAQs</a></li>
+                    </ul>
+                </div>
             </div>
 
         </div>
 
+        <p class="back-top floatright" style="display: none;">
+            <a href="#top"><span></span></a>
+        </p>
+
+        <div class="row">
+            <div id="toplink"><a href="#top" class="top-link" title="Back to top">Back To Top <i class="fa fa-chevron-up"></i></a></div>
+
+            <div class="subfooter">
+                <div class="col-md-6">
+                    <p>&copy; Easy Batch is created by <a href="http://www.mahmoudbenhassine.com" target="_blank">Mahmoud Ben Hassine</a></p>
+                </div>
+                <div class="col-md-6">
+                    <p class="footer-menu">Easy Batch is released under the <a href="http://opensource.org/licenses/mit-license.php/" target="_blank">MIT license</a>.</p>
+                </div>
+            </div>
+        </div>
     </div>
+</footer>
 
-    <hr>
+<!--Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script> <!--Legacy jQuery support for quicksand plugin-->
 
-    <footer>
-        <p class="pull-right"><a href="#"><i class="icon-circle-arrow-up"></i> Back to top</a></p>
-    <p>Easy Batch is maintained by <a href="mailto:md.benhassine@gmail.com?subject=[Easy Batch]"><i class="icon-envelope"></i> benas</a> on <a href="https://github.com/benas/easy-batch" target="_blank"><i class="icon-github"></i> GitHub</a></p>
-    </footer>
+<!-- Bootstrap JS -->
+<script src="/js/bootstrap.min.js"></script>
 
-</div>
+<!--JS plugins-->
+<script src="/js/plugins/clingify/jquery.clingify.min.js"></script>
+<script src="/js/plugins/jRespond/jRespond.js"></script>
 
-<script src="../resources/js/jquery.js"></script>
-<script src="../resources/js/bootstrap.min.js"></script>
-
-</body></html>
+<!--Custom scripts mainly used to trigger libraries -->
+<script src="/js/script.min.js"></script>
+<script src="/js/scrolltotop.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
